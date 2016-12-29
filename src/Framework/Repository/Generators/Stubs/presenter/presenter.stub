@@ -4,15 +4,10 @@ $NAMESPACE$
 
 use $TRANSFORMER$;
 
-/**
- * Class $CLASS$Presenter
- *
- * @package $NAMESPACE$
- */
 class $CLASS$Presenter extends BasePresenter
 {
     /**
-     * Transformer
+     * Transformer.
      *
      * @return \League\Fractal\TransformerAbstract
      */

@@ -4,15 +4,10 @@ $NAMESPACE$
 
 use $MODEL$;
 
-/**
- * Class $CLASS$Transformer
- * @package $NAMESPACE$
- */
 class $CLASS$Transformer extends BaseTransformer
 {
-
     /**
-     * Transform the \$CLASS$ entity
+     * Transform the \$CLASS$ entity.
      * @param \$CLASS$ $model
      *
      * @return array
@@ -25,7 +20,7 @@ class $CLASS$Transformer extends BaseTransformer
             /* place your other model properties here */
 
             'created_at' => (string) $model->created_at,
-            'updated_at' => (string) $model->updated_at
+            'updated_at' => (string) $model->updated_at,
         ];
     }
 }

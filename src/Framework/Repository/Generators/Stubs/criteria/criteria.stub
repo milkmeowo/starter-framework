@@ -5,14 +5,10 @@ $NAMESPACE$
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-/**
- * Class $CLASS$Criteria
- * @package $NAMESPACE$
- */
 class $CLASS$Criteria implements CriteriaInterface
 {
     /**
-     * Apply criteria in query repository
+     * Apply criteria in query repository.
      *
      * @param                     $model
      * @param RepositoryInterface $repository

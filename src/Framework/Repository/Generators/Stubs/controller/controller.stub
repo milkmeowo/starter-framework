@@ -3,16 +3,12 @@
 $NAMESPACE$
 
 use Illuminate\Http\Request;
-
 use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
 $REPOSITORY$
 $VALIDATOR$
 
-
 class $CONTROLLER$Controller extends Controller
 {
-
     /**
      * @var $CLASS$Repository
      */
@@ -28,7 +24,6 @@ class $CONTROLLER$Controller extends Controller
         $this->repository = $repository;
         $this->validator  = $validator;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -57,7 +52,6 @@ class $CONTROLLER$Controller extends Controller
 
         return $$SINGULAR$;
     }
-
 
     /**
      * Display the specified resource.
@@ -89,7 +83,6 @@ class $CONTROLLER$Controller extends Controller
 
         return $this->response->noContent();
     }
-
 
     /**
      * Remove the specified resource from storage.
