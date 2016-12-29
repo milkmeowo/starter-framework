@@ -8,6 +8,9 @@ node_modules/
 # Composer
 composer.lock
 
+# php-cs-fixer
+.php_cs.cache
+
 # Laravel 5 & Lumen specific
 public/storage
 storage/*.key

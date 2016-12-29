@@ -1,0 +1,23 @@
+
+    /*
+    |------------------------------------------------
+    | $CLASS$ Routes
+    |------------------------------------------------
+    */
+
+    // 列表 $CLASS$
+    $app->get('/$LOWERCLASS$', ['as' => '$LOWERCLASS$.index', 'uses' => '$CONTROLLER$@index']);
+
+    // 创建 $CLASS$
+    $app->post('/$LOWERCLASS$', ['as' => '$LOWERCLASS$.store', 'uses' => '$CONTROLLER$@store']);
+
+    // 显示 $CLASS$
+    $app->get('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.show', 'uses' => '$CONTROLLER$@show']);
+
+    // 更新 $CLASS$
+    $app->put('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@update']);
+
+    // 删除 $CLASS$
+    $app->delete('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@delete']);
+
+    $PLACEHOLDER$

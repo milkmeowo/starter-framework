@@ -1,0 +1,12 @@
+<?php
+
+$NAMESPACE$
+
+/**
+ * Interface $CLASS$Repository
+ * @package $NAMESPACE$
+ */
+interface $CLASS$Repository extends BaseRepositoryInterface
+{
+    //
+}
