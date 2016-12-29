@@ -1,0 +1,113 @@
+<?php
+
+$NAMESPACE$
+
+use Illuminate\Http\Request;
+
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Validator\Exceptions\ValidatorException;
+$REPOSITORY$
+$VALIDATOR$
+
+
+class $CONTROLLER$Controller extends Controller
+{
+
+    /**
+     * @var $CLASS$Repository
+     */
+    protected $repository;
+
+    /**
+     * @var $CLASS$Validator
+     */
+    protected $validator;
+
+    public function __construct($CLASS$Repository $repository, $CLASS$Validator $validator)
+    {
+        $this->repository = $repository;
+        $this->validator  = $validator;
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        return $this->repository->paginate($request->get('limit'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
+
+        $$SINGULAR$ = $this->repository->create($data);
+
+        return $$SINGULAR$;
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  $CLASS$UpdateRequest $request
+     * @param  string            $id
+     *
+     * @return Response
+     */
+    public function update($CLASS$UpdateRequest $request, $id)
+    {
+        $data = $request->all();
+
+        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+
+        $$SINGULAR$ = $this->repository->update($data, $id);
+
+        return $this->response->noContent();
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $deleted = $this->repository->delete($id);
+
+        if ($deleted) {
+            // Deleted, return 204 No Content
+            return $this->response->noContent();
+        } else {
+            // Failed, throw exception
+            throw new DeleteResourceFailedException('Failed to delete.');
+        }
+    }
+}
