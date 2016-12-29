@@ -1,0 +1,19 @@
+# JetBrains IDEs
+.idea
+
+# Vendors
+vendor/
+node_modules/
+
+# Composer
+composer.lock
+
+# Laravel 5 & Lumen specific
+public/storage
+storage/*.key
+.env
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
