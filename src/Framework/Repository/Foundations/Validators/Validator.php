@@ -6,23 +6,22 @@ use Prettus\Validator\LaravelValidator;
 
 class Validator extends LaravelValidator
 {
-
     /**
-     * Validation Custom Messages
+     * Validation Custom Messages.
      *
      * @var array
      */
     protected $messages = [];
 
     /**
-     * Validation Custom Attributes
+     * Validation Custom Attributes.
      *
      * @var array
      */
     protected $attributes = [];
 
     /**
-     * Get Custom error messages for validation
+     * Get Custom error messages for validation.
      *
      * @return array
      */
@@ -32,7 +31,7 @@ class Validator extends LaravelValidator
     }
 
     /**
-     * Set Custom error messages for Validation
+     * Set Custom error messages for Validation.
      * @param array $messages
      *
      * @return $this
@@ -40,11 +39,12 @@ class Validator extends LaravelValidator
     public function setMessages(array $messages)
     {
         $this->messages = $messages;
+
         return $this;
     }
 
     /**
-     * Get Custom error attributes for validation
+     * Get Custom error attributes for validation.
      *
      * @return array
      */
@@ -54,7 +54,7 @@ class Validator extends LaravelValidator
     }
 
     /**
-     * Set Custom error attributes for Validation
+     * Set Custom error attributes for Validation.
      *
      * @param array $attributes
      *
@@ -63,27 +63,28 @@ class Validator extends LaravelValidator
     public function setAttributes(array $attributes)
     {
         $this->attributes = $attributes;
+
         return $this;
     }
 
     /**
-     * Pass the data and the rules to the validator
+     * Pass the data and the rules to the validator.
      *
      * @param string $action
      * @return bool
      */
     public function passes($action = null)
     {
-        $rules      = $this->getRules($action);
-        $messages   = $this->getMessages();
+        $rules = $this->getRules($action);
+        $messages = $this->getMessages();
         $attributes = $this->getAttributes();
-        $validator  = $this->validator->make($this->data, $rules, $messages, $attributes);
-        if( $validator->fails() )
-        {
+        $validator = $this->validator->make($this->data, $rules, $messages, $attributes);
+        if ($validator->fails()) {
             $this->errors = $validator->messages();
+
             return false;
         }
+
         return true;
     }
-
 }
