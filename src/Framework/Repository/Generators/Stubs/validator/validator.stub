@@ -3,12 +3,30 @@
 $NAMESPACE$
 
 use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\LaravelValidator;
+use Milkmeowo\Framework\Repository\Foundations\Validators\Validator;
 
-class $CLASS$Validator extends LaravelValidator
+class $CLASS$Validator extends Validator
 {
     protected $rules = [
         ValidatorInterface::RULE_CREATE => $RULES$,
         ValidatorInterface::RULE_UPDATE => $RULES$,
-   ];
+    ];
+
+    /**
+     * Validation Custom Messages.
+     *
+     * @var array
+     */
+    protected $messages = [
+        //'required' => 'The :attribute field is required.',
+    ];
+
+    /**
+     * Validation Custom Attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        //'email' => 'E-mail',
+    ];
 }
