@@ -5,12 +5,16 @@ namespace Milkmeowo\Framework\Repository\Foundations\Repositories\Eloquent;
 use Milkmeowo\Framework\Repository\Foundations\Presenters\Presenter;
 use Milkmeowo\Framework\Repository\Foundations\Repositories\Interfaces\RepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
+use Prettus\Repository\Traits\CacheableRepository;
 use Prettus\Validator\Contracts\ValidatorInterface;
 
-abstract class Repository extends BaseRepository implements RepositoryInterface
+abstract class Repository extends BaseRepository implements RepositoryInterface,CacheableInterface
 {
+    use CacheableRepository;
+
     /**
      * @var Model
      */
