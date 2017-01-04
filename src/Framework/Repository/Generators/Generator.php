@@ -5,6 +5,7 @@ namespace Milkmeowo\Framework\Repository\Generators;
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
 
 abstract class Generator
 {
