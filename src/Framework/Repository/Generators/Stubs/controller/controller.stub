@@ -4,6 +4,10 @@ $NAMESPACE$
 
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Validator\Exceptions\ValidatorException;
+use Dingo\Api\Exception\StoreResourceFailedException;
+use Dingo\Api\Exception\UpdateResourceFailedException;
+use Dingo\Api\Exception\DeleteResourceFailedException;
 $REPOSITORY$
 $VALIDATOR$
 
@@ -44,13 +48,21 @@ class $CONTROLLER$Controller extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        try {
 
-        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $data = $request->all();
 
-        $$SINGULAR$ = $this->repository->create($data);
+            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-        return $$SINGULAR$;
+            $$SINGULAR$ = $this->repository->create($data);
+
+            return $$SINGULAR$;
+
+        } catch (ValidatorException $e) {
+
+            throw new UpdateResourceFailedException('Failed to update.', $e->getMessageBag());
+
+        }
     }
 
     /**
@@ -75,13 +87,21 @@ class $CONTROLLER$Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        try {
 
-        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $data = $request->all();
 
-        $$SINGULAR$ = $this->repository->update($data, $id);
+            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-        return $this->response->noContent();
+            $$SINGULAR$ = $this->repository->update($data, $id);
+
+            return $$SINGULAR$;
+
+        } catch (ValidatorException $e) {
+
+            throw new UpdateResourceFailedException('Failed to update.', $e->getMessageBag());
+
+        }
     }
 
     /**
