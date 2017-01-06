@@ -1,10 +1,11 @@
 <?php
 
-namespace Milkmeowo\Framework\Repository\Foundations\Repositories\Eloquent;
+namespace Milkmeowo\Framework\Foundation\Repositories\Eloquent;
 
-use Milkmeowo\Framework\Repository\Foundations\Presenters\Presenter;
-use Milkmeowo\Framework\Repository\Foundations\Repositories\Interfaces\RepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
+use Milkmeowo\Framework\Foundation\Presenters\Presenter;
+use Milkmeowo\Framework\Foundation\Repositories\Interfaces\RepositoryInterface;
+use Milkmeowo\Framework\Repository\Foundations\Repositories\Eloquent\Relation;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;

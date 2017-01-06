@@ -1,8 +1,14 @@
 <?php
 
-namespace Milkmeowo\Framework\Repository\Foundations\Repositories\Criteria;
+namespace Milkmeowo\Framework\Foundation\Repositories\Criteria;
 
-class RequestCriteria
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Prettus\Repository\Contracts\CriteriaInterface;
+use Prettus\Repository\Contracts\RepositoryInterface;
+
+class RequestCriteria implements CriteriaInterface
 {
     /**
      * @var \Illuminate\Http\Request
@@ -139,7 +145,7 @@ class RequestCriteria
                 }
 
                 $model = $model->leftJoin($sortTable, $keyName, '=', $sortTable.'.id')->orderBy($sortColumn,
-                        $sortedBy)->addSelect($table.'.*');
+                    $sortedBy)->addSelect($table.'.*');
             } else {
                 $model = $model->orderBy($orderBy, $sortedBy);
             }

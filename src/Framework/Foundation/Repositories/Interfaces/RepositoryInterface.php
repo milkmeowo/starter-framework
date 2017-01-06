@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Framework\Repository\Foundations\Repositories\Interfaces;
+namespace Milkmeowo\Framework\Foundation\Repositories\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\RepositoryInterface as BaseRepositoryInterface;

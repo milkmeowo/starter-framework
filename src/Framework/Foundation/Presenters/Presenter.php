@@ -1,9 +1,10 @@
 <?php
 
-namespace Milkmeowo\Framework\Repository\Foundations\Presenters;
+namespace Milkmeowo\Framework\Foundation\Presenters;
 
 use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Support\Collection;
+use Milkmeowo\Framework\Repository\Foundations\Presenters\Exception;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 abstract class Presenter extends FractalPresenter

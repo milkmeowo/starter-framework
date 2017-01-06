@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Framework\Repository\Foundations\Validators;
+namespace Milkmeowo\Framework\Foundation\Validators;
 
 use Prettus\Validator\LaravelValidator;
 
