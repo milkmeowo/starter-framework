@@ -3,12 +3,10 @@
 namespace Milkmeowo\Framework\Foundation\Providers;
 
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumenServiceProvider;
-use Milkmeowo\Framework\Repository\Providers\RepositoryServiceProvider;
 use Tymon\JWTAuth\Providers\LumenServiceProvider as JWTLumenServiceProvider;
 
 class LumenServiceProvider extends BaseServiceProvider
 {
-
     public function boot()
     {
         parent::boot();

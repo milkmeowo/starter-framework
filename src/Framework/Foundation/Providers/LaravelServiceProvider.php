@@ -3,11 +3,9 @@
 namespace Milkmeowo\Framework\Foundation\Providers;
 
 use Dingo\Api\Provider\LaravelServiceProvider as DingoLaravelServiceProvider;
-use Milkmeowo\Framework\Repository\Providers\RepositoryServiceProvider;
 
 class LaravelServiceProvider extends BaseServiceProvider
 {
-
     public function boot()
     {
         parent::boot();
