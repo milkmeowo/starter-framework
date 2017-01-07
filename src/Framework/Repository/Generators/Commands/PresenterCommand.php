@@ -49,7 +49,7 @@ class PresenterCommand extends Command
 
             $filesystem = new Filesystem();
 
-            if (! $filesystem->exists(app_path().'/Transformers/'.$this->argument('name').'Transformer.php')) {
+            if (! $filesystem->exists(app()->path().'/Transformers/'.$this->argument('name').'Transformer.php')) {
                 (new TransformerGenerator([
                         'name'  => $this->argument('name'),
                         'force' => $this->option('force'),
