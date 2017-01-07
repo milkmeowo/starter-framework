@@ -26,7 +26,7 @@
       "Milkmeowo\\Framework\\": "src/Framework"
     },
     "files": [
-      "src/Framework/Foundation/helpers.php"
+      "src/Framework/Base/helpers.php"
     ]
   },
   "config": {

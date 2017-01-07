@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Foundation\Validation;
+namespace Milkmeowo\Framework\Base\Validation;
 
 use Dingo\Api\Exception\ResourceException;
 use Illuminate\Http\Request;

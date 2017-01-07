@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Foundation\Http\Controllers;
+namespace Milkmeowo\Framework\Base\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

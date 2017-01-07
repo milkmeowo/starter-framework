@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Framework\Foundation\Repositories\Criteria;
+namespace Milkmeowo\Framework\Base\Repositories\Criteria;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

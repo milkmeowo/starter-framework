@@ -1,11 +1,12 @@
 <?php
 
-namespace Milkmeowo\Framework\Foundation\Repositories\Eloquent;
+namespace Milkmeowo\Framework\Base\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Milkmeowo\Framework\Foundation\Presenters\Presenter;
-use Milkmeowo\Framework\Foundation\Repositories\Interfaces\RepositoryInterface;
-use Milkmeowo\Framework\Repository\Foundations\Repositories\Eloquent\Relation;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Milkmeowo\Framework\Base\Presenters\Presenter;
+use Milkmeowo\Framework\Base\Repositories\Interfaces\RepositoryInterface;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
@@ -97,7 +98,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
      */
     public function relation()
     {
-        return;
+        return $this->relateModel;
     }
 
     /**
@@ -112,7 +113,9 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     {
         $this->applyCriteria();
         $this->applyScope();
+
         $lists = $this->model->lists($column, $key);
+
         $this->resetModel();
 
         return $lists;
@@ -129,7 +132,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     {
         $this->applyCriteria();
         $this->applyScope();
-        if ($this->model instanceof \Illuminate\Database\Eloquent\Builder || $this->model instanceof \Illuminate\Database\Eloquent\Relations\Relation) {
+        if ($this->model instanceof Builder || $this->model instanceof Relation) {
             $results = $this->model->get($columns);
         } else {
             $results = $this->model->all($columns);

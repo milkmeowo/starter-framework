@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Framework\Foundation\Transformers;
+namespace Milkmeowo\Framework\Base\Transformers;
 
 use League\Fractal\TransformerAbstract;
 

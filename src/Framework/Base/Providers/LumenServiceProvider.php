@@ -1,25 +1,30 @@
 <?php
 
-namespace Milkmeowo\Framework\Foundation\Providers;
+namespace Milkmeowo\Framework\Base\Providers;
 
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumenServiceProvider;
-use Tymon\JWTAuth\Providers\LumenServiceProvider as JWTLumenServiceProvider;
 
 class LumenServiceProvider extends BaseServiceProvider
 {
     public function boot()
     {
         parent::boot();
+
+        // l5-repository
+        $this->app->configure('repository');
+
     }
 
     public function register()
     {
         parent::register();
 
+        // l5-repository validator
+        $this->app->bind('Symfony\Component\Translation\TranslatorInterface', function ($app) {
+            return $app['translator'];
+        });
+
         // dingo api
         $this->app->register(DingoLumenServiceProvider::class);
-
-        // Tymon JWT
-        $this->app->register(JWTLumenServiceProvider::class);
     }
 }

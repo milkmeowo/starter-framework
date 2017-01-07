@@ -1,16 +1,15 @@
 <?php
 
-namespace Milkmeowo\Framework\Foundation\Api\Controllers;
+namespace Milkmeowo\Framework\Base\Api\Controllers;
 
 use Dingo\Api\Routing\Helpers as DingoHelper;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
-use Milkmeowo\Foundation\Validation\ValidatesRequests;
 
 abstract class LaravelController extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, Milkmeowo\Base\Validation\ValidatesRequests;
     /* Dingo API Helper */
     use DingoHelper;
 }

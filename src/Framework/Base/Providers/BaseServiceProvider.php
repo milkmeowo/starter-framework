@@ -6,9 +6,10 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
-namespace Milkmeowo\Framework\Foundation\Providers;
+namespace Milkmeowo\Framework\Base\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Milkmeowo\Framework\Repository\Providers\RepositoryServiceProvider;
 
 class BaseServiceProvider extends ServiceProvider
 {

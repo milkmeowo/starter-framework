@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Framework\Foundation\Providers;
+namespace Milkmeowo\Framework\Base\Providers;
 
 use Dingo\Api\Provider\LaravelServiceProvider as DingoLaravelServiceProvider;
 
