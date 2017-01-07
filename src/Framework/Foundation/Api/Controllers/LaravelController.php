@@ -1,6 +1,6 @@
 <?php
 
-namespace Milkmeowo\Framework\Dingo\Api\Controllers;
+namespace Milkmeowo\Framework\Foundation\Api\Controllers;
 
 use Dingo\Api\Routing\Helpers as DingoHelper;
 use Illuminate\Routing\Controller as BaseController;
