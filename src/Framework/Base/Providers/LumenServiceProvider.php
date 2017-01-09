@@ -12,7 +12,6 @@ class LumenServiceProvider extends BaseServiceProvider
 
         // l5-repository
         $this->app->configure('repository');
-
     }
 
     public function register()

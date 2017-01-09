@@ -13,7 +13,6 @@ namespace Milkmeowo\Framework\Base\Traits;
  * @UPDATE: saving > updating > updated > saved
  * @DELETE: deleting > deleted
  * @RESTORE: restoring > restored
- *
  */
 trait BaseRepositoryEventsTrait
 {
