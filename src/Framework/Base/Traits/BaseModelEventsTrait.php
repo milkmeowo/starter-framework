@@ -16,7 +16,6 @@ use Milkmeowo\Framework\Base\Repositories\Interfaces\BaseRepositoryEventsInterfa
  * @UPDATE: saving > updating > updated > saved
  * @DELETE: deleting > deleted
  * @RESTORE: restoring > restored
- *
  */
 trait BaseModelEventsTrait
 {
@@ -50,7 +49,7 @@ trait BaseModelEventsTrait
     {
 
         // auto set related user id
-        if ($this->autoRelatedUserId && empty($this->{static::RELATED_USER_ID})) {
+        if ($this->autoRelatedUserId && empty($this->{static::RELATED_USER_ID}) && $this->hasTableColumn(static::RELATED_USER_ID)) {
             $user_id = $this->getAuthUserId();
             if ($user_id > 0) {
                 $this->{static::RELATED_USER_ID} = $user_id;
@@ -170,5 +169,20 @@ trait BaseModelEventsTrait
         }
 
         return $usingSoftDeletes;
+    }
+
+    public function getTableColumns()
+    {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
+
+    public function hasTableColumn($column)
+    {
+        return $this->getConnection()->getSchemaBuilder()->hasColumn($this->getTable(), $column);
+    }
+
+    public function hasTableColumns(array $columns)
+    {
+        return $this->getConnection()->getSchemaBuilder()->hasColumn($this->getTable(), $columns);
     }
 }
