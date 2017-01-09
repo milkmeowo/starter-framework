@@ -2,7 +2,9 @@
 
 namespace Milkmeowo\Framework\Base\Providers;
 
-use Dingo\Api\Provider\LumenServiceProvider as DingoLumenServiceProvider;
+use Dingo\Api\Provider\LumenServiceProvider as DingoLumen;
+use Milkmeowo\Framework\Dingo\Providers\ApiServiceProvider as DingoApi;
+use Milkmeowo\Framework\Dingo\Providers\LumenEventsServiceProvider as DingoEvents;
 
 class LumenServiceProvider extends BaseServiceProvider
 {
@@ -24,6 +26,9 @@ class LumenServiceProvider extends BaseServiceProvider
         });
 
         // dingo api
-        $this->app->register(DingoLumenServiceProvider::class);
+        $this->app->register(DingoLumen::class);
+        $this->app->register(DingoApi::class);
+        $this->app->register(DingoEvents::class);
+
     }
 }
