@@ -3,6 +3,7 @@
 namespace Milkmeowo\Framework\Dingo\Providers;
 
 use Laravel\Lumen\Providers\EventServiceProvider as ServiceProvider;
+use Milkmeowo\Framework\Dingo\Listeners\AddPaginationLinksToResponse;
 
 class LumenEventsServiceProvider extends ServiceProvider
 {
