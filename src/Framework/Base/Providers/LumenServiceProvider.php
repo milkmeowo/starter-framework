@@ -3,6 +3,7 @@
 namespace Milkmeowo\Framework\Base\Providers;
 
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumen;
+use Dusterio\LumenPassport\PassportServiceProvider as LumenPassportServiceProvider;
 use Milkmeowo\Framework\Dingo\Providers\ApiServiceProvider as DingoApi;
 use Milkmeowo\Framework\Dingo\Providers\LumenEventsServiceProvider as DingoEvents;
 
@@ -29,5 +30,8 @@ class LumenServiceProvider extends BaseServiceProvider
         $this->app->register(DingoLumen::class);
         $this->app->register(DingoApi::class);
         $this->app->register(DingoEvents::class);
+
+        // lumen passport support
+        $this->app->register(LumenPassportServiceProvider::class);
     }
 }
