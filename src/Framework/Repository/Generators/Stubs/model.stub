@@ -2,8 +2,6 @@
 
 $NAMESPACE$
 
-$USE_BASE_MODEL$
-
 class $CLASS$ extends BaseModel
 {
     /**
@@ -12,5 +10,4 @@ class $CLASS$ extends BaseModel
      * @var array
      */
     protected $fillable = $FILLABLE$;
-
 }
