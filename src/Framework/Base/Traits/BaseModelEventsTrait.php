@@ -116,8 +116,14 @@ trait BaseModelEventsTrait
     public function onDeleting()
     {
         if (static::usingSoftDeletes()) {
-            $this->{static::DELETED_BY} = $this->getAuthUserId();
-            $this->{static::DELETED_IP} = smart_get_client_ip();
+            if ($this->hasTableColumn(static::DELETED_BY)) {
+                $this->{static::DELETED_BY} = $this->getAuthUserId();
+            }
+
+            if ($this->hasTableColumn(static::DELETED_IP)) {
+                $this->{static::DELETED_IP} = smart_get_client_ip();
+            }
+
             $this->flushEventListeners();
             $this->save();
         }
@@ -138,6 +144,13 @@ trait BaseModelEventsTrait
 
     public function onRestoring()
     {
+        if ($this->hasTableColumn(static::DELETED_BY)) {
+            $this->{static::DELETED_BY} = null;
+        }
+        if ($this->hasTableColumn(static::DELETED_IP)) {
+            $this->{static::DELETED_IP} = null;
+        }
+
         $repository = $this->getRepository();
         if ($repository instanceof BaseRepositoryEventsInterface) {
             $repository->onRestoring();
@@ -146,9 +159,6 @@ trait BaseModelEventsTrait
 
     public function onRestored()
     {
-        $this->{static::DELETED_BY} = null;
-        $this->{static::DELETED_IP} = null;
-
         $repository = $this->getRepository();
         if ($repository instanceof BaseRepositoryEventsInterface) {
             $repository->onRestored();

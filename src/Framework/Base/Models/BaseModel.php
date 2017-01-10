@@ -16,7 +16,14 @@ class BaseModel extends Model implements BaseModelEventsInterface
      *
      * @var bool
      */
-    protected $autoRelatedUserId = false;
+    protected $autoRelatedUserId = true;
+
+    /**
+     * The name of the "related user id" column.
+     *
+     * @var string
+     */
+    const RELATED_USER_ID = 'user_id';
 
     /**
      * Indicates if the model should be recorded users.
@@ -24,6 +31,20 @@ class BaseModel extends Model implements BaseModelEventsInterface
      * @var bool
      */
     protected $userstamps = true;
+
+    /**
+     * The name of the "created by" column.
+     *
+     * @var string
+     */
+    const CREATED_BY = 'created_by';
+
+    /**
+     * The name of the "updated by" column.
+     *
+     * @var string
+     */
+    const UPDATED_BY = 'updated_by';
 
     /**
      * Indicates if the model should be recorded ips.
@@ -54,32 +75,11 @@ class BaseModel extends Model implements BaseModelEventsInterface
     const DELETED_IP = 'deleted_ip';
 
     /**
-     * The name of the "created by" column.
-     *
-     * @var string
-     */
-    const CREATED_BY = 'created_by';
-
-    /**
-     * The name of the "updated by" column.
-     *
-     * @var string
-     */
-    const UPDATED_BY = 'updated_by';
-
-    /**
      * The name of the "deleted by" column.
      *
      * @var string
      */
     const DELETED_BY = 'deleted_by';
-
-    /**
-     * The name of the "related user id" column.
-     *
-     * @var string
-     */
-    const RELATED_USER_ID = 'user_id';
 
     /**
      * @return \Dingo\Api\Auth\Auth
