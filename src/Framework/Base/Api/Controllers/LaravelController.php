@@ -13,4 +13,12 @@ abstract class LaravelController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     /* Dingo API Helper */
     use DingoHelper;
+
+    /**
+     * LaravelController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('api.access');
+    }
 }

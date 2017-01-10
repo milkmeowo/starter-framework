@@ -4,9 +4,6 @@ $NAMESPACE$
 
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
-use Dingo\Api\Exception\StoreResourceFailedException;
-use Dingo\Api\Exception\UpdateResourceFailedException;
 use Dingo\Api\Exception\DeleteResourceFailedException;
 $REPOSITORY$
 $VALIDATOR$
@@ -26,7 +23,7 @@ class $CONTROLLER$Controller extends Controller
     public function __construct($CLASS$Repository $repository, $CLASS$Validator $validator)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**
@@ -48,21 +45,14 @@ class $CONTROLLER$Controller extends Controller
      */
     public function store(Request $request)
     {
-        try {
+        $data = $request->all();
 
-            $data = $request->all();
+        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
+        $$SINGULAR$ = $this->repository->create($data);
 
-            $$SINGULAR$ = $this->repository->create($data);
-
-            return $$SINGULAR$;
-
-        } catch (ValidatorException $e) {
-
-            throw new UpdateResourceFailedException('Failed to update.', $e->getMessageBag());
-
-        }
+        // Created, return 201 data
+        return $this->response->created(null, $$SINGULAR$);
     }
 
     /**
@@ -87,21 +77,14 @@ class $CONTROLLER$Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
+        $data = $request->all();
 
-            $data = $request->all();
+        $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+        $$SINGULAR$ = $this->repository->update($data, $id);
 
-            $$SINGULAR$ = $this->repository->update($data, $id);
-
-            return $$SINGULAR$;
-
-        } catch (ValidatorException $e) {
-
-            throw new UpdateResourceFailedException('Failed to update.', $e->getMessageBag());
-
-        }
+        // Updated, return 204 No Content
+        return $this->response->noContent();
     }
 
     /**
