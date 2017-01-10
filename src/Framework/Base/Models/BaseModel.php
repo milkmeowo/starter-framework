@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
 use Milkmeowo\Framework\Base\Traits\BaseModelEventsTrait;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class BaseModel extends Model implements BaseModelEventObserverable
+class BaseModel extends Model implements BaseModelEventObserverable,Transformable
 {
-    use BaseModelEventsTrait;
+    use BaseModelEventsTrait,TransformableTrait;
 
     /**
      * Indicates if the model should be auto set user_id.
