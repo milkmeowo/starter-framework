@@ -2,14 +2,15 @@
 
 $NAMESPACE$
 
-use Illuminate\Database\Eloquent\Model;
-use Prettus\Repository\Contracts\Transformable;
-use Prettus\Repository\Traits\TransformableTrait;
+$USE_BASE_MODEL$
 
-class $CLASS$ extends Model implements Transformable
+class $CLASS$ extends BaseModel
 {
-    use TransformableTrait;
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = $FILLABLE$;
 
 }
