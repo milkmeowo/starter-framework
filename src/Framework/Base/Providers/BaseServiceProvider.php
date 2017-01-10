@@ -19,6 +19,9 @@ class BaseServiceProvider extends ServiceProvider
 
     public function register()
     {
+        // command
+        $this->app->register(CommandServiderProvider::class);
+
         // l5-repository
         $this->app->register(RepositoryServiceProvider::class);
     }
