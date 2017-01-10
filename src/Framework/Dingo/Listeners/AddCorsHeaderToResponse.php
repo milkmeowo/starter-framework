@@ -1,19 +1,17 @@
 <?php
 /**
- * AddCorsHeaderToResponse.php
+ * AddCorsHeaderToResponse.php.
  *
  * Description
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
-
 namespace Milkmeowo\Framework\Dingo\Listeners;
 
 use Dingo\Api\Event\ResponseWasMorphed;
 
 class AddCorsHeaderToResponse
 {
-
     public function handle(ResponseWasMorphed $event)
     {
         $headers = $event->response->headers;
@@ -22,5 +20,4 @@ class AddCorsHeaderToResponse
         $headers->set('Access-Control-Allow-Origin', '*');
         $headers->set('Access-Control-Allow-Methods', 'OPTIONS, GET, HEAD, POST, PUT, DELETE');
     }
-
 }

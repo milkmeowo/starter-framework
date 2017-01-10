@@ -1,12 +1,11 @@
 <?php
 /**
- * LaravelEventsServiceProvider.php
+ * LaravelEventsServiceProvider.php.
  *
  * Description
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
-
 namespace Milkmeowo\Framework\Dingo\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

@@ -21,7 +21,5 @@ class LaravelServiceProvider extends BaseServiceProvider
         $this->app->register(DingoLaravel::class);
         $this->app->register(DingoApi::class);
         $this->app->register(DingoEvents::class);
-
-
     }
 }

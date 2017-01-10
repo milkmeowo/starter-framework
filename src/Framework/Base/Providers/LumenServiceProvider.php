@@ -29,6 +29,5 @@ class LumenServiceProvider extends BaseServiceProvider
         $this->app->register(DingoLumen::class);
         $this->app->register(DingoApi::class);
         $this->app->register(DingoEvents::class);
-
     }
 }
