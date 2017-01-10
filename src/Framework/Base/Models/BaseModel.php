@@ -109,16 +109,6 @@ class BaseModel extends Model implements BaseModelEventObserverable,Transformabl
     }
 
     /**
-     * Get ID from the model primary key.
-     *
-     * @return mixed
-     */
-    public function getIdAttribute()
-    {
-        return $this->getKey();
-    }
-
-    /**
      * Get current model's user_id.
      *
      * @return mixed|null
