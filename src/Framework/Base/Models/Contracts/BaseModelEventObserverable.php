@@ -4,7 +4,7 @@ namespace Milkmeowo\Framework\Base\Models\Contracts;
 
 use Milkmeowo\Framework\Base\Repositories\Interfaces\BaseRepositoryEventsInterface;
 
-interface BaseModelEventsInterface
+interface BaseModelEventObserverable
 {
     /**
      * @param BaseRepositoryEventsInterface $repository

@@ -5,7 +5,7 @@ namespace Milkmeowo\Framework\Base\Repositories\Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventsInterface;
+use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
 use Milkmeowo\Framework\Base\Presenters\Presenter;
 use Milkmeowo\Framework\Base\Repositories\Interfaces\BaseRepositoryEventsInterface;
 use Milkmeowo\Framework\Base\Repositories\Interfaces\RepositoryInterface;
@@ -96,7 +96,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
             throw new RepositoryException('Class '.get_class($model).' must be an instance of Illuminate\\Database\\Eloquent\\Model');
         }
 
-        if ($model instanceof BaseModelEventsInterface) {
+        if ($model instanceof BaseModelEventObserverable) {
             $model->setRepository($this);    //set repository
         }
 

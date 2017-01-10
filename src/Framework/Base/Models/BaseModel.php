@@ -4,10 +4,10 @@ namespace Milkmeowo\Framework\Base\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventsInterface;
+use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
 use Milkmeowo\Framework\Base\Traits\BaseModelEventsTrait;
 
-class BaseModel extends Model implements BaseModelEventsInterface
+class BaseModel extends Model implements BaseModelEventObserverable
 {
     use BaseModelEventsTrait;
 
