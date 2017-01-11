@@ -96,7 +96,7 @@ class $CONTROLLER$Controller extends BaseController
      */
     public function destroy($id)
     {
-        $deleted = $this->repository->delete($id);
+        $deleted = $this->repository->delete((int) $id);
 
         if ($deleted) {
             // Deleted, return 204 No Content
@@ -104,6 +104,50 @@ class $CONTROLLER$Controller extends BaseController
         } else {
             // Failed, throw exception
             throw new DeleteResourceFailedException('Failed to delete.');
+        }
+    }
+
+    /**
+     * Display a listing of the trashed resource.
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function trashedIndex(Request $request)
+    {
+        return $this->repository->OnlyTrashed()->paginate($request->get('limit'));
+    }
+
+    /**
+     * Display the specified trashed resource.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashedShow($id)
+    {
+        return $this->repository->OnlyTrashed()->find($id);
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param $id
+     *
+     * @return \Dingo\Api\Http\Response
+     */
+    public function restore($id)
+    {
+        $restored =  $this->repository->restore((int) $id);
+
+        if ($restored) {
+            // Restored, return 204 No Content
+            return $this->response->noContent();
+        } else {
+            // Failed, throw exception
+            throw new ResourceException('Failed to restore.');
         }
     }
 }

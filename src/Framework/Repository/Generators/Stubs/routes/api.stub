@@ -5,6 +5,15 @@
     |------------------------------------------------
     */
 
+    // 已删除列表 $CLASS$
+    $api->get('/$LOWERCLASS$/trashed', ['as' => '$LOWERCLASS$.trashed', 'uses' => 'UsersController@trashedIndex']);
+
+    // 显示删除 $CLASS$
+    $api->get('/$LOWERCLASS$/trashed/{id}', ['as' => '$LOWERCLASS$.show', 'uses' => '$CONTROLLER$@trashedShow']);
+
+    // 恢复
+    $api->put('/$LOWERCLASS$/{id}/restore', ['as' => '$LOWERCLASS$.restore', 'uses' => 'UsersController@restore']);
+
     // 列表 $CLASS$
     $api->get('/$LOWERCLASS$', ['as' => '$LOWERCLASS$.index', 'uses' => '$CONTROLLER$@index']);
 
@@ -18,6 +27,6 @@
     $api->put('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@update']);
 
     // 删除 $CLASS$
-    $api->delete('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@destroy']);
+    $api->delete('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.destroy', 'uses' => '$CONTROLLER$@destroy']);
 
     $PLACEHOLDER$
