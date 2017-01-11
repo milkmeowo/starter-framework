@@ -34,6 +34,23 @@ class RoutesGenerator extends Generator
     }
 
     /**
+     * Get stub template for generated file.
+     *
+     * @return string
+     */
+    public function getStub($stub = null)
+    {
+        $stub = isset($stub) ? $stub : $this->stub;
+        $path = config('repository.generator.stubsOverridePath', __DIR__);
+
+        if (! file_exists($path.'/Stubs/'.$stub.'.stub')) {
+            $path = __DIR__;
+        }
+
+        return (new Stub($path.'/Stubs/'.$stub.'.stub', $this->getReplacements()))->render();
+    }
+
+    /**
      * Get destination path for generated file.
      *
      * @return string

@@ -72,17 +72,15 @@ abstract class Generator
      *
      * @return string
      */
-    public function getStub($stub = null)
+    public function getStub()
     {
-        $stub = isset($stub) ? $stub : $this->stub;
-
         $path = config('repository.generator.stubsOverridePath', __DIR__);
 
-        if (! file_exists($path.'/Stubs/'.$stub.'.stub')) {
+        if (! file_exists($path.'/Stubs/'.$this->stub.'.stub')) {
             $path = __DIR__;
         }
 
-        return (new Stub($path.'/Stubs/'.$stub.'.stub', $this->getReplacements()))->render();
+        return (new Stub($path.'/Stubs/'.$this->stub.'.stub', $this->getReplacements()))->render();
     }
 
     /**
