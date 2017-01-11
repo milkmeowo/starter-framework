@@ -296,7 +296,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
             $restored = $model;
         }
 
-        return $restored;
+        return $this->parserResult($restored);
     }
 
     /**
@@ -326,7 +326,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
             $restored = $this->model;
         }
 
-        return $restored;
+        return $this->parserResult($restored);
     }
 
     /**
