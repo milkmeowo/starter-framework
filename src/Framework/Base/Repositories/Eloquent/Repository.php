@@ -12,6 +12,8 @@ use Milkmeowo\Framework\Base\Repositories\Interfaces\RepositoryInterface;
 use Milkmeowo\Framework\Base\Traits\BaseRepositoryEventsTrait;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Events\RepositoryEntityDeleted;
+use Prettus\Repository\Events\RepositoryEntityUpdated;
 use Prettus\Repository\Exceptions\RepositoryException;
 use Prettus\Repository\Traits\CacheableRepository;
 use Prettus\Validator\Contracts\ValidatorInterface;
@@ -278,13 +280,14 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
         $temporarySkipPresenter = $this->skipPresenter;
         $this->skipPresenter(true);
 
-        $model = $this->find($id);
-        $originalModel = clone $model;
+        $model = $this->withTrashed()->find($id);
 
         $this->skipPresenter($temporarySkipPresenter);
         $this->resetModel();
 
         $restored = $model->restore();
+
+        event(new RepositoryEntityUpdated($this, $model));
 
         return $restored;
     }
@@ -305,7 +308,9 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
 
         $this->applyConditions($where);
 
-        $deleted = $this->model->restore();
+        $deleted = $this->model->withTrashed()->restore();
+
+        event(new RepositoryEntityUpdated($this, $this->model));
 
         $this->skipPresenter($temporarySkipPresenter);
         $this->resetModel();
