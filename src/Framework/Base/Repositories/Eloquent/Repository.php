@@ -234,40 +234,43 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     }
 
     /**
-     * withTrashed
+     * withTrashed.
      *
      * @return $this
      */
     public function withTrashed()
     {
         $this->model = $this->model->withTrashed();
+
         return $this;
     }
 
     /**
-     * without-trashed
+     * without-trashed.
      *
      * @return $this
      */
     public function withoutTrashed()
     {
         $this->model = $this->model->withoutTrashed();
+
         return $this;
     }
 
     /**
-     *
+     * onlyTrashed.
      *
      * @return $this
      */
     public function onlyTrashed()
     {
         $this->model = $this->model->onlyTrashed();
+
         return $this;
     }
 
     /**
-     * Restore a entity in repository by id
+     * Restore a entity in repository by id.
      *
      * @param $id
      *
@@ -289,6 +292,10 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
 
         event(new RepositoryEntityUpdated($this, $model));
 
+        if ($restored) {
+            $restored = $model;
+        }
+
         return $restored;
     }
 
@@ -308,18 +315,22 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
 
         $this->applyConditions($where);
 
-        $deleted = $this->model->withTrashed()->restore();
+        $restored = $this->model->withTrashed()->restore();
 
         event(new RepositoryEntityUpdated($this, $this->model));
 
         $this->skipPresenter($temporarySkipPresenter);
         $this->resetModel();
 
-        return $deleted;
+        if ($restored) {
+            $restored = $this->model;
+        }
+
+        return $restored;
     }
 
     /**
-     * ForceDelete a entity in repository by id
+     * ForceDelete a entity in repository by id.
      *
      * @param $id
      *
