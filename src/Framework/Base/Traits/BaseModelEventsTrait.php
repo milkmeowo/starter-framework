@@ -19,8 +19,16 @@ use Milkmeowo\Framework\Base\Repositories\Interfaces\BaseRepositoryEventsInterfa
  */
 trait BaseModelEventsTrait
 {
+    /**
+     * @var BaseRepositoryEventsInterface
+     */
     public static $repository;
 
+    /**
+     * booted. observe the base model event with priority 99.
+     *
+     * @return mixed
+     */
     public static function bootBaseModelEventsTrait()
     {
         // Setup event bindings
@@ -30,6 +38,8 @@ trait BaseModelEventsTrait
     }
 
     /**
+     * set the related RepositoryEventsInterface.
+     *
      * @param BaseRepositoryEventsInterface $repository
      */
     public function setRepository(BaseRepositoryEventsInterface $repository)
@@ -38,13 +48,20 @@ trait BaseModelEventsTrait
     }
 
     /**
-     * @return mixed
+     * get the related RepositoryEventsInterface.
+     *
+     * @return BaseRepositoryEventsInterface
      */
     public function getRepository()
     {
         return self::$repository;
     }
 
+    /**
+     * Listen a creating model event.
+     *
+     * @return mixed the function result
+     */
     public function onCreating()
     {
 
@@ -62,6 +79,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a created model event.
+     *
+     * @return mixed the function result
+     */
     public function onCreated()
     {
         $repository = $this->getRepository();
@@ -70,6 +92,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a updating model event.
+     *
+     * @return mixed the function result
+     */
     public function onUpdating()
     {
         $repository = $this->getRepository();
@@ -78,6 +105,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a updated model event.
+     *
+     * @return mixed the function result
+     */
     public function onUpdated()
     {
         $repository = $this->getRepository();
@@ -86,6 +118,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a saving model event.
+     *
+     * @return mixed the function result
+     */
     public function onSaving()
     {
 
@@ -105,6 +142,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a saved model event.
+     *
+     * @return mixed the function result
+     */
     public function onSaved()
     {
         $repository = $this->getRepository();
@@ -113,6 +155,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a deleting model event.
+     *
+     * @return mixed the function result
+     */
     public function onDeleting()
     {
         if (static::usingSoftDeletes()) {
@@ -134,6 +181,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a deleted model event.
+     *
+     * @return mixed the function result
+     */
     public function onDeleted()
     {
         $repository = $this->getRepository();
@@ -142,6 +194,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a restoring model event.
+     *
+     * @return mixed the function result
+     */
     public function onRestoring()
     {
         if ($this->hasTableColumn(static::DELETED_BY)) {
@@ -157,6 +214,11 @@ trait BaseModelEventsTrait
         }
     }
 
+    /**
+     * Listen a restored model event.
+     *
+     * @return mixed the function result
+     */
     public function onRestored()
     {
         $repository = $this->getRepository();
@@ -179,20 +241,5 @@ trait BaseModelEventsTrait
         }
 
         return $usingSoftDeletes;
-    }
-
-    public function getTableColumns()
-    {
-        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
-    }
-
-    public function hasTableColumn($column)
-    {
-        return $this->getConnection()->getSchemaBuilder()->hasColumn($this->getTable(), $column);
-    }
-
-    public function hasTableColumns(array $columns)
-    {
-        return $this->getConnection()->getSchemaBuilder()->hasColumn($this->getTable(), $columns);
     }
 }

@@ -99,11 +99,11 @@ class BaseModel extends Model implements BaseModelEventObserverable,Transformabl
     {
         $ip = smart_get_client_ip();
 
-        if (! $this->isDirty(static::UPDATED_IP)) {
+        if (! $this->isDirty(static::UPDATED_IP) && $this->hasTableColumn(static::UPDATED_IP)) {
             $this->{static::UPDATED_IP} = $ip;
         }
 
-        if (! $this->exists && ! $this->isDirty(static::CREATED_IP)) {
+        if (! $this->exists && ! $this->isDirty(static::CREATED_IP) && $this->hasTableColumn(static::CREATED_IP)) {
             $this->{static::CREATED_IP} = $ip;
         }
     }
@@ -130,11 +130,11 @@ class BaseModel extends Model implements BaseModelEventObserverable,Transformabl
             return;
         }
 
-        if (! $this->isDirty(static::UPDATED_BY)) {
+        if (! $this->isDirty(static::UPDATED_BY) && $this->hasTableColumn(static::UPDATED_BY)) {
             $this->{static::UPDATED_BY} = $user_id;
         }
 
-        if (! $this->exists && ! $this->isDirty(static::CREATED_BY)) {
+        if (! $this->exists && ! $this->isDirty(static::CREATED_BY) && $this->hasTableColumn(static::CREATED_BY)) {
             $this->{static::CREATED_BY} = $user_id;
         }
     }
@@ -180,5 +180,39 @@ class BaseModel extends Model implements BaseModelEventObserverable,Transformabl
     public function isAuthUserOwner()
     {
         return $this->getAuthUserId() == $this->getRelatedUserId();
+    }
+
+    /**
+     * get all the database table columns listing.
+     *
+     * @return array
+     */
+    public function getTableColumns()
+    {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
+
+    /**
+     * check column exist in table.
+     *
+     * @param $column
+     *
+     * @return bool
+     */
+    public function hasTableColumn($column)
+    {
+        return $this->getConnection()->getSchemaBuilder()->hasColumn($this->getTable(), $column);
+    }
+
+    /**
+     * check columns exist in table.
+     *
+     * @param array $columns
+     *
+     * @return bool
+     */
+    public function hasTableColumns(array $columns)
+    {
+        return $this->getConnection()->getSchemaBuilder()->hasColumns($this->getTable(), $columns);
     }
 }
