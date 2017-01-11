@@ -33,6 +33,6 @@ class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Reposit
         $this->pushCriteria(app(RequestCriteria::class));
 
         // Custom Criteria
-        $this->pushCriteria(app($CLASS$Criteria::class));
+        //$this->pushCriteria(app($CLASS$Criteria::class));
     }
 }
