@@ -230,4 +230,139 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
 
         return $this;
     }
+
+    /**
+     * withTrashed
+     *
+     * @return $this
+     */
+    public function withTrashed()
+    {
+        $this->model = $this->model->withTrashed();
+        return $this;
+    }
+
+    /**
+     * without-trashed
+     *
+     * @return $this
+     */
+    public function withoutTrashed()
+    {
+        $this->model = $this->model->withoutTrashed();
+        return $this;
+    }
+
+    /**
+     *
+     *
+     * @return $this
+     */
+    public function onlyTrashed()
+    {
+        $this->model = $this->model->onlyTrashed();
+        return $this;
+    }
+
+    /**
+     * Restore a entity in repository by id
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function restore($id)
+    {
+        $this->applyScope();
+
+        $temporarySkipPresenter = $this->skipPresenter;
+        $this->skipPresenter(true);
+
+        $model = $this->find($id);
+        $originalModel = clone $model;
+
+        $this->skipPresenter($temporarySkipPresenter);
+        $this->resetModel();
+
+        $restored = $model->restore();
+
+        return $restored;
+    }
+
+    /**
+     * restore multiple entities by given criteria.
+     *
+     * @param array $where
+     *
+     * @return int
+     */
+    public function restoreWhere(array $where)
+    {
+        $this->applyScope();
+
+        $temporarySkipPresenter = $this->skipPresenter;
+        $this->skipPresenter(true);
+
+        $this->applyConditions($where);
+
+        $deleted = $this->model->restore();
+
+        $this->skipPresenter($temporarySkipPresenter);
+        $this->resetModel();
+
+        return $deleted;
+    }
+
+    /**
+     * ForceDelete a entity in repository by id
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    public function ForceDelete($id)
+    {
+        $this->applyScope();
+
+        $temporarySkipPresenter = $this->skipPresenter;
+        $this->skipPresenter(true);
+
+        $model = $this->find($id);
+        $originalModel = clone $model;
+
+        $this->skipPresenter($temporarySkipPresenter);
+        $this->resetModel();
+
+        $deleted = $model->ForceDelete();
+
+        event(new RepositoryEntityDeleted($this, $originalModel));
+
+        return $deleted;
+    }
+
+    /**
+     * ForceDelete multiple entities by given criteria.
+     *
+     * @param array $where
+     *
+     * @return int
+     */
+    public function forceDeleteWhere(array $where)
+    {
+        $this->applyScope();
+
+        $temporarySkipPresenter = $this->skipPresenter;
+        $this->skipPresenter(true);
+
+        $this->applyConditions($where);
+
+        $deleted = $this->model->ForceDelete();
+
+        event(new RepositoryEntityDeleted($this, $this->model));
+
+        $this->skipPresenter($temporarySkipPresenter);
+        $this->resetModel();
+
+        return $deleted;
+    }
 }
