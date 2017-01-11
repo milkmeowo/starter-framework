@@ -19,12 +19,7 @@ class $CLASS$ extends Migration
             // Adding more table related fields here...
             $FIELDS$
 
-            $table->unsignedInteger('created_by')->nullable();
-            $table->timestamp('created_at')->nullable();
-            $table->ipAddress('created_ip')->nullable();
-            $table->unsignedInteger('updated_by')->nullable();
-            $table->timestamp('updated_at')->nullable();
-            $table->ipAddress('updated_ip')->nullable();
+            $table->recordStamps();
         });
     }
 
