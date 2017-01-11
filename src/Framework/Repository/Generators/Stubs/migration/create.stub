@@ -19,9 +19,10 @@ class $CLASS$ extends Migration
             // Adding more table related fields here...
             $FIELDS$
 
+            // with created_by/at/ip updated_by/at/ip
             $table->recordStamps();
 
-            // softDeletesRecordStamps
+            // softDeletesRecordStamps with deleted_by/at/ip
             //$table->softDeletesRecordStamps();
         });
     }
