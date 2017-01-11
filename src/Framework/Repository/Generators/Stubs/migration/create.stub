@@ -20,6 +20,9 @@ class $CLASS$ extends Migration
             $FIELDS$
 
             $table->recordStamps();
+
+            // softDeletesRecordStamps
+            //$table->softDeletesRecordStamps();
         });
     }
 
