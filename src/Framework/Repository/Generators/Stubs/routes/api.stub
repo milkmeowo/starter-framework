@@ -9,7 +9,7 @@
     $api->get('/$LOWERCLASS$/trashed', ['as' => '$LOWERCLASS$.trashed', 'uses' => 'UsersController@trashedIndex']);
 
     // 显示删除 $CLASS$
-    $api->get('/$LOWERCLASS$/trashed/{id}', ['as' => '$LOWERCLASS$.show', 'uses' => '$CONTROLLER$@trashedShow']);
+    $api->get('/$LOWERCLASS$/trashed/{id}', ['as' => '$LOWERCLASS$.trashed.show', 'uses' => '$CONTROLLER$@trashedShow']);
 
     // 恢复
     $api->put('/$LOWERCLASS$/{id}/restore', ['as' => '$LOWERCLASS$.restore', 'uses' => 'UsersController@restore']);
