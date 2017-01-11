@@ -18,6 +18,6 @@
     $app->put('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@update']);
 
     // 删除 $CLASS$
-    $app->delete('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@delete']);
+    $app->delete('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@destroy']);
 
     $PLACEHOLDER$

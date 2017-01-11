@@ -4,6 +4,7 @@ $NAMESPACE$
 
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
+use Dingo\Api\Exception\DeleteResourceFailedException;
 $REPOSITORY$
 $VALIDATOR$
 
@@ -22,7 +23,7 @@ class $CONTROLLER$Controller extends Controller
     public function __construct($CLASS$Repository $repository, $CLASS$Validator $validator)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**
@@ -50,7 +51,8 @@ class $CONTROLLER$Controller extends Controller
 
         $$SINGULAR$ = $this->repository->create($data);
 
-        return $$SINGULAR$;
+        // Created, return 201 data
+        return $this->response->created(null, $$SINGULAR$);
     }
 
     /**
@@ -73,7 +75,7 @@ class $CONTROLLER$Controller extends Controller
      *
      * @return Response
      */
-    public function update($CLASS$UpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
 
@@ -81,6 +83,7 @@ class $CONTROLLER$Controller extends Controller
 
         $$SINGULAR$ = $this->repository->update($data, $id);
 
+        // Updated, return 204 No Content
         return $this->response->noContent();
     }
 

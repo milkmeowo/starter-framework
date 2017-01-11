@@ -72,15 +72,17 @@ abstract class Generator
      *
      * @return string
      */
-    public function getStub()
+    public function getStub($stub = null)
     {
+        $stub = isset($stub) ? $stub : $this->stub;
+
         $path = config('repository.generator.stubsOverridePath', __DIR__);
 
-        if (! file_exists($path.'/Stubs/'.$this->stub.'.stub')) {
+        if (! file_exists($path.'/Stubs/'.$stub.'.stub')) {
             $path = __DIR__;
         }
 
-        return (new Stub($path.'/Stubs/'.$this->stub.'.stub', $this->getReplacements()))->render();
+        return (new Stub($path.'/Stubs/'.$stub.'.stub', $this->getReplacements()))->render();
     }
 
     /**
@@ -199,8 +201,11 @@ abstract class Generator
             case ('provider' === $class):
                 $path = config('repository.generator.paths.provider', 'RepositoryServiceProvider');
                 break;
-            case ('routes' === $class):
-                $path = config('repository.generator.paths.routes', 'web');
+            case ('routes.web' === $class):
+                $path = config('repository.generator.paths.routes.web', 'web');
+                break;
+            case ('routes.api' === $class):
+                $path = config('repository.generator.paths.routes.api', 'api');
                 break;
             case ('criteria' === $class):
                 $path = config('repository.generator.paths.criteria', 'Criteria');
