@@ -8,7 +8,7 @@ use Dingo\Api\Exception\DeleteResourceFailedException;
 $REPOSITORY$
 $VALIDATOR$
 
-class $CONTROLLER$Controller extends Controller
+class $CONTROLLER$Controller extends BaseController
 {
     /**
      * @var $CLASS$Repository
