@@ -14,23 +14,23 @@ class RoutesGenerator extends Generator
      */
     protected $stub = 'routes/web';
 
-    /**
-     * Get generator path config node.
-     *
-     * @return string
-     */
-    public function getPathConfigNode()
-    {
-        return 'routes';
-    }
+    protected $webStub = 'routes/web';
+
+    protected $apiStub = 'routes/api';
+
+    protected $webPathConfigNode = 'routes.web';
+
+    protected $apiPathConfigNode = 'routes.api';
 
     public function run()
     {
         $filesystem = new Filesystem();
 
-        // Add entity repository binding to the repository service provider
-        $route = $filesystem->get($this->getPath());
-        $filesystem->put($this->getPath(), str_replace($this->routesPlaceholder, $this->getStub(), $route));
+        $webRoute = $filesystem->get($this->getWebPath());
+        $filesystem->put($this->getWebPath(), str_replace($this->routesPlaceholder, $this->getStub($this->webStub), $webRoute));
+
+        $apiRoute = $filesystem->get($this->getApiPath());
+        $filesystem->put($this->getApiPath(), str_replace($this->routesPlaceholder, $this->getStub($this->apiStub), $apiRoute));
     }
 
     /**
@@ -38,9 +38,14 @@ class RoutesGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getWebPath()
     {
-        return $this->getBasePath().'/'.parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true).'.php';
+        return $this->getBasePath().'/'.parent::getConfigGeneratorClassPath($this->webPathConfigNode, true).'.php';
+    }
+
+    public function getApiPath()
+    {
+        return $this->getBasePath().'/'.parent::getConfigGeneratorClassPath($this->apiPathConfigNode, true).'.php';
     }
 
     /**
@@ -71,5 +76,10 @@ class RoutesGenerator extends Generator
             'controller' => $this->getControllerName(),
             'placeholder' => $this->routesPlaceholder,
         ]);
+    }
+
+    public function getPathConfigNode()
+    {
+        // TODO: Implement getPathConfigNode() method.
     }
 }
