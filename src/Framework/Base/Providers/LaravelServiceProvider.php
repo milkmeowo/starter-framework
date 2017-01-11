@@ -3,8 +3,7 @@
 namespace Milkmeowo\Framework\Base\Providers;
 
 use Dingo\Api\Provider\LaravelServiceProvider as DingoLaravel;
-use Milkmeowo\Framework\Base\Api\Middleware\ApiAccessMiddleware;
-use Milkmeowo\Framework\Dingo\Providers\ApiServiceProvider as DingoApi;
+use Milkmeowo\Framework\Dingo\Providers\ExceptionHandlerServiceProvider as DingoExceptionHandler;
 use Milkmeowo\Framework\Dingo\Providers\LaravelEventsServiceProvider as DingoEvents;
 
 class LaravelServiceProvider extends BaseServiceProvider
@@ -14,6 +13,10 @@ class LaravelServiceProvider extends BaseServiceProvider
         parent::boot();
 
         $this->bootMiddleware();
+    }
+
+    protected function bootMiddleware()
+    {
     }
 
     public function register()
@@ -27,12 +30,7 @@ class LaravelServiceProvider extends BaseServiceProvider
     {
         // dingo api
         $this->app->register(DingoLaravel::class);
-        $this->app->register(DingoApi::class);
+        $this->app->register(DingoExceptionHandler::class);
         $this->app->register(DingoEvents::class);
-    }
-
-    protected function bootMiddleware()
-    {
-        $this->app['router']->middleware('api.access', ApiAccessMiddleware::class);
     }
 }

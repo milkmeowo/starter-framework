@@ -8,12 +8,4 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 abstract class LumenController extends BaseController
 {
     use DingoHelper;
-
-    /**
-     * LumenController constructor.
-     */
-    public function __construct()
-    {
-        $this->middleware('api.access');
-    }
 }

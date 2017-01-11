@@ -4,8 +4,7 @@ namespace Milkmeowo\Framework\Base\Providers;
 
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumen;
 use Dusterio\LumenPassport\PassportServiceProvider as LumenPassportServiceProvider;
-use Milkmeowo\Framework\Base\Api\Middleware\ApiAccessMiddleware;
-use Milkmeowo\Framework\Dingo\Providers\ApiServiceProvider as DingoApi;
+use Milkmeowo\Framework\Dingo\Providers\ExceptionHandlerServiceProvider as DingoExceptionHandler;
 use Milkmeowo\Framework\Dingo\Providers\LumenEventsServiceProvider as DingoEvents;
 
 class LumenServiceProvider extends BaseServiceProvider
@@ -19,6 +18,16 @@ class LumenServiceProvider extends BaseServiceProvider
         $this->bootMiddleware();
     }
 
+    protected function bootConfigure()
+    {
+        // l5-repository
+        $this->app->configure('repository');
+    }
+
+    protected function bootMiddleware()
+    {
+    }
+
     public function register()
     {
         parent::register();
@@ -30,20 +39,6 @@ class LumenServiceProvider extends BaseServiceProvider
         $this->registerPassport();
     }
 
-    protected function registerDingo()
-    {
-        // dingo api
-        $this->app->register(DingoLumen::class);
-        $this->app->register(DingoApi::class);
-        $this->app->register(DingoEvents::class);
-    }
-
-    protected function registerPassport()
-    {
-        // lumen passport support
-        $this->app->register(LumenPassportServiceProvider::class);
-    }
-
     protected function registerRepository()
     {
         // l5-repository validator
@@ -52,17 +47,17 @@ class LumenServiceProvider extends BaseServiceProvider
         });
     }
 
-    protected function bootMiddleware()
+    protected function registerDingo()
     {
-        // Api Access throw catch
-        $this->app->routeMiddleware([
-            'api.access' => ApiAccessMiddleware::class,
-        ]);
+        // dingo api
+        $this->app->register(DingoLumen::class);
+        $this->app->register(DingoExceptionHandler::class);
+        $this->app->register(DingoEvents::class);
     }
 
-    protected function bootConfigure()
+    protected function registerPassport()
     {
-        // l5-repository
-        $this->app->configure('repository');
+        // lumen passport support
+        $this->app->register(LumenPassportServiceProvider::class);
     }
 }
