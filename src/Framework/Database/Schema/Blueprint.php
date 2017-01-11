@@ -64,4 +64,58 @@ class Blueprint extends BaseBlueprint
     {
         $this->dropColumn('deleted_ip', 'deleted_by');
     }
+
+    /**
+     * Specify a fulltext index for the table.
+     *
+     * @param  string|array  $columns
+     * @param  string  $name
+     * @return \Illuminate\Support\Fluent
+     */
+    public function fulltext($columns, $name = null)
+    {
+        return $this->indexCommand('fulltext', $columns, $name);
+    }
+
+    /**
+     * Indicate that the given fulltext key should be dropped.
+     *
+     * @param  string|array  $index
+     * @return \Illuminate\Support\Fluent
+     */
+    public function dropFulltext($index)
+    {
+        return $this->dropIndexCommand('dropFulltext', 'fulltext', $index);
+    }
+
+    /**
+     * Add the index commands fluently specified on columns.
+     *
+     * @return void
+     */
+    protected function addFluentIndexes()
+    {
+        $FluentIndexes = ['primary', 'unique', 'index', 'fulltext'];
+        foreach ($this->columns as $column) {
+            foreach ($FluentIndexes as $index) {
+                // If the index has been specified on the given column, but is simply
+                // equal to "true" (boolean), no name has been specified for this
+                // index, so we will simply call the index methods without one.
+                if ($column->$index === true) {
+                    $this->$index($column->name);
+
+                    continue 2;
+                }
+
+                // If the index has been specified on the column and it is something
+                // other than boolean true, we will assume a name was provided on
+                // the index specification, and pass in the name to the method.
+                elseif (isset($column->$index)) {
+                    $this->$index($column->name, $column->$index);
+
+                    continue 2;
+                }
+            }
+        }
+    }
 }
