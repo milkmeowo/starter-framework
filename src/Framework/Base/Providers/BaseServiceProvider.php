@@ -8,6 +8,7 @@
  */
 namespace Milkmeowo\Framework\Base\Providers;
 
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\PassportServiceProvider as LaravelPassportServiceProvider;
 use Milkmeowo\Framework\Database\Providers\DatabaseServiceProvider;
@@ -32,5 +33,15 @@ class BaseServiceProvider extends ServiceProvider
 
         // database
         $this->app->register(DatabaseServiceProvider::class);
+
+        // dev provider
+        $this->registerDevPackages();
+    }
+
+    public function registerDevPackages()
+    {
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
     }
 }
