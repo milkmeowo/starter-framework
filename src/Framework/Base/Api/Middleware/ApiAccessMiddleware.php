@@ -4,11 +4,13 @@ namespace Milkmeowo\Framework\Base\Api\Middleware;
 
 use Closure;
 use Dingo\Api\Exception\ResourceException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Exception\HttpResponseException;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use Prettus\Validator\Exceptions\ValidatorException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -35,6 +37,8 @@ class ApiAccessMiddleware
             }
 
             return $response;
+        } catch (AuthorizationException $e) {
+            throw new AccessDeniedHttpException($e->getMessage());
         } catch (OAuthServerException $e) {
             $message = env('API_DEBUG') ? $e->getMessage() : null;
             throw new HttpException($e->getHttpStatusCode(), $message, $e, $e->getHttpHeaders());
