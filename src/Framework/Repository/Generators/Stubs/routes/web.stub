@@ -6,7 +6,7 @@
     */
 
     // 已删除列表 $CLASS$
-    $app->get('/$LOWERCLASS$/trashed', ['as' => '$LOWERCLASS$.trashed', 'uses' => 'UsersController@trashedIndex']);
+    $app->get('/$LOWERCLASS$/trashed', ['as' => '$LOWERCLASS$.trashed.index', 'uses' => 'UsersController@trashedIndex']);
 
     // 显示删除 $CLASS$
     $app->get('/$LOWERCLASS$/trashed/{id}', ['as' => '$LOWERCLASS$.trashed.show', 'uses' => '$CONTROLLER$@trashedShow']);
