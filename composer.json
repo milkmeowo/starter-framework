@@ -16,6 +16,7 @@
     "dingo/api": "1.0.x@dev",
     "doctrine/dbal": "^2.5",
     "dusterio/lumen-passport": "^0.1.7",
+    "itsgoingd/clockwork": "^1.12",
     "league/fractal": "^0.14.0",
     "prettus/l5-repository": "^2.6"
   },

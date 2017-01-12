@@ -2,6 +2,8 @@
 
 namespace Milkmeowo\Framework\Base\Providers;
 
+use Clockwork\Support\Lumen\ClockworkMiddleware;
+use Clockwork\Support\Lumen\ClockworkServiceProvider;
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumen;
 use Dusterio\LumenPassport\PassportServiceProvider as LumenPassportServiceProvider;
 use Milkmeowo\Framework\Dingo\Providers\ExceptionHandlerServiceProvider as DingoExceptionHandler;
@@ -26,6 +28,11 @@ class LumenServiceProvider extends BaseServiceProvider
 
     protected function bootMiddleware()
     {
+        if ($this->app->environment() !== 'production') {
+            $this->app->middleware([
+                'clockwork' => ClockworkMiddleware::class,
+            ]);
+        }
     }
 
     public function register()
@@ -37,6 +44,15 @@ class LumenServiceProvider extends BaseServiceProvider
         $this->registerDingo();
 
         $this->registerPassport();
+
+        $this->registerClockwork();
+    }
+
+    protected function registerClockwork()
+    {
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(ClockworkServiceProvider::class);
+        }
     }
 
     protected function registerRepository()
