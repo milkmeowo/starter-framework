@@ -50,7 +50,7 @@ class ModelGenerator extends Generator
      */
     public function getBasePath()
     {
-        return config('repository.generator.basePath', app_path());
+        return config('repository.generator.basePath', app()->path());
     }
 
     /**
@@ -62,6 +62,7 @@ class ModelGenerator extends Generator
     {
         return array_merge(parent::getReplacements(), [
             'fillable' => $this->getFillable(),
+            'use_base_model' => 'use '.$this->getRootNamespace().'\BaseModel;',
         ]);
     }
 

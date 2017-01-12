@@ -5,6 +5,7 @@ namespace Milkmeowo\Framework\Repository\Generators;
 use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
 
 abstract class Generator
 {
@@ -198,8 +199,11 @@ abstract class Generator
             case ('provider' === $class):
                 $path = config('repository.generator.paths.provider', 'RepositoryServiceProvider');
                 break;
-            case ('routes' === $class):
-                $path = config('repository.generator.paths.routes', 'web');
+            case ('routes.web' === $class):
+                $path = config('repository.generator.paths.routes.web', 'web');
+                break;
+            case ('routes.api' === $class):
+                $path = config('repository.generator.paths.routes.api', 'api');
                 break;
             case ('criteria' === $class):
                 $path = config('repository.generator.paths.criteria', 'Criteria');

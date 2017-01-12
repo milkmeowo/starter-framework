@@ -3,7 +3,7 @@
 $NAMESPACE$
 
 use Prettus\Validator\Contracts\ValidatorInterface;
-use Milkmeowo\Framework\Repository\Foundations\Validators\Validator;
+use Milkmeowo\Framework\Base\Validators\Validator;
 
 class $CLASS$Validator extends Validator
 {

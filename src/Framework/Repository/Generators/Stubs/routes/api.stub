@@ -1,0 +1,32 @@
+
+    /*
+    |------------------------------------------------
+    | $CLASS$ Routes
+    |------------------------------------------------
+    */
+
+    // 已删除列表 $CLASS$
+    $api->get('/$LOWERCLASS$/trashed', ['as' => '$LOWERCLASS$.trashed.index', 'uses' => 'UsersController@trashedIndex']);
+
+    // 显示删除 $CLASS$
+    $api->get('/$LOWERCLASS$/trashed/{id}', ['as' => '$LOWERCLASS$.trashed.show', 'uses' => '$CONTROLLER$@trashedShow']);
+
+    // 恢复
+    $api->put('/$LOWERCLASS$/{id}/restore', ['as' => '$LOWERCLASS$.restore', 'uses' => 'UsersController@restore']);
+
+    // 列表 $CLASS$
+    $api->get('/$LOWERCLASS$', ['as' => '$LOWERCLASS$.index', 'uses' => '$CONTROLLER$@index']);
+
+    // 创建 $CLASS$
+    $api->post('/$LOWERCLASS$', ['as' => '$LOWERCLASS$.store', 'uses' => '$CONTROLLER$@store']);
+
+    // 显示 $CLASS$
+    $api->get('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.show', 'uses' => '$CONTROLLER$@show']);
+
+    // 更新 $CLASS$
+    $api->put('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.update', 'uses' => '$CONTROLLER$@update']);
+
+    // 删除 $CLASS$
+    $api->delete('/$LOWERCLASS$/{id}', ['as' => '$LOWERCLASS$.destroy', 'uses' => '$CONTROLLER$@destroy']);
+
+    $PLACEHOLDER$

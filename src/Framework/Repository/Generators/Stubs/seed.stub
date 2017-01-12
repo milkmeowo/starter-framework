@@ -1,7 +1,5 @@
 <?php
 
-$NAMESPACE$
-
 use Illuminate\Database\Seeder;
 
 class $CLASS$Seeder extends Seeder
