@@ -2,6 +2,7 @@
 
 namespace Milkmeowo\Framework\Base\Providers;
 
+use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 use Clockwork\Support\Laravel\ClockworkMiddleware;
 use Clockwork\Support\Laravel\ClockworkServiceProvider;
 use Dingo\Api\Provider\LaravelServiceProvider as DingoLaravel;
@@ -35,6 +36,8 @@ class LaravelServiceProvider extends BaseServiceProvider
         $this->registerDingo();
 
         $this->registerClockwork();
+
+        $this->registerCors();
     }
 
     protected function registerClockwork()
@@ -50,5 +53,10 @@ class LaravelServiceProvider extends BaseServiceProvider
         $this->app->register(DingoLaravel::class);
         $this->app->register(DingoExceptionHandler::class);
         $this->app->register(DingoEvents::class);
+    }
+
+    protected function registerCors()
+    {
+        $this->app->register(CorsServiceProvider::class);
     }
 }

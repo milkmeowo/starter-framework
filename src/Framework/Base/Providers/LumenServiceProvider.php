@@ -2,6 +2,7 @@
 
 namespace Milkmeowo\Framework\Base\Providers;
 
+use Barryvdh\Cors\LumenServiceProvider as CorsServiceProvider;
 use Clockwork\Support\Lumen\ClockworkMiddleware;
 use Clockwork\Support\Lumen\ClockworkServiceProvider;
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumen;
@@ -24,6 +25,9 @@ class LumenServiceProvider extends BaseServiceProvider
     {
         // l5-repository
         $this->app->configure('repository');
+
+        // cors
+        $this->app->configure('cors');
     }
 
     protected function bootMiddleware()
@@ -46,6 +50,8 @@ class LumenServiceProvider extends BaseServiceProvider
         $this->registerPassport();
 
         $this->registerClockwork();
+
+        $this->registerCors();
     }
 
     protected function registerClockwork()
@@ -75,5 +81,10 @@ class LumenServiceProvider extends BaseServiceProvider
     {
         // lumen passport support
         $this->app->register(LumenPassportServiceProvider::class);
+    }
+
+    protected function registerCors()
+    {
+        $this->app->register(CorsServiceProvider::class);
     }
 }
