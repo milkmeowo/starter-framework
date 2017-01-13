@@ -70,7 +70,7 @@ class $CONTROLLER$Controller extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  $CLASS$UpdateRequest $request
+     * @param  Request $request
      * @param  string            $id
      *
      * @return Response

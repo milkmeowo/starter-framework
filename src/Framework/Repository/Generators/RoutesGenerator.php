@@ -89,7 +89,7 @@ class RoutesGenerator extends Generator
     public function getReplacements()
     {
         return array_merge(parent::getReplacements(), [
-            'lowerclass' => strtolower($this->getClass()).'s',
+            'lowerclass' => str_plural(strtolower($this->getClass())),
             'controller' => $this->getControllerName(),
             'placeholder' => $this->routesPlaceholder,
         ]);
