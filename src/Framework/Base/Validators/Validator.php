@@ -2,9 +2,9 @@
 
 namespace Milkmeowo\Framework\Base\Validators;
 
-use Prettus\Validator\LaravelValidator;
+use Prettus\Validator\AbstractValidator;
 
-class Validator extends LaravelValidator
+class Validator extends AbstractValidator
 {
     /**
      * Validation Custom Messages.
@@ -78,7 +78,7 @@ class Validator extends LaravelValidator
         $rules = $this->getRules($action);
         $messages = $this->getMessages();
         $attributes = $this->getAttributes();
-        $validator = $this->validator->make($this->data, $rules, $messages, $attributes);
+        $validator = app('validator')->make($this->data, $rules, $messages, $attributes);
         if ($validator->fails()) {
             $this->errors = $validator->messages();
 
