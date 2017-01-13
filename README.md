@@ -16,6 +16,7 @@ It is fully utilised Repository Design pattern.
 * Laravel Passport Support
 * ide-helper Support
 * clockwork support
+* Cors support
 * All of the above are supported for laravel & lumen
 
 # Getting started
@@ -512,6 +513,32 @@ php artisan ide-helper:meta
 **reference:** 
 
 [Clockwork](https://github.com/itsgoingd/clockwork)
+
+## Cors
+
+**Usage**
+
+The ServiceProvider adds a route middleware you can use, called `cors`. You can apply this to a route or group to add CORS support.
+
+```php
+Route::group(['middleware' => 'cors'], function(Router $router){
+    $router->get('api', 'ApiController@index');
+});
+```
+
+If you want CORS to apply for all your routes, add it as global middleware in `app/http/Kernel.php`:
+
+```php
+protected $middleware = [
+    ....
+    \Barryvdh\Cors\HandleCors::class
+];
+```
+
+
+**reference:** 
+
+[barryvdh/laravel-cors](https://github.com/barryvdh/laravel-cors)
 
 ## License
 
