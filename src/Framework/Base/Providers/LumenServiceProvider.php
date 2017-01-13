@@ -5,6 +5,7 @@ namespace Milkmeowo\Framework\Base\Providers;
 use Barryvdh\Cors\LumenServiceProvider as CorsServiceProvider;
 use Clockwork\Support\Lumen\ClockworkMiddleware;
 use Clockwork\Support\Lumen\ClockworkServiceProvider;
+use Dingo\Api\Http\Middleware\Request as DingoMiddlewareRequest;
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumen;
 use Dusterio\LumenPassport\PassportServiceProvider as LumenPassportServiceProvider;
 use Milkmeowo\Framework\Dingo\Providers\ExceptionHandlerServiceProvider as DingoExceptionHandler;
@@ -34,6 +35,10 @@ class LumenServiceProvider extends BaseServiceProvider
     {
         if ($this->app->environment() !== 'production') {
             $this->app->middleware([
+                'clockwork' => ClockworkMiddleware::class,
+            ]);
+            // Register into dingo api middleware
+            $this->app[DingoMiddlewareRequest::class]->mergeMiddlewares([
                 'clockwork' => ClockworkMiddleware::class,
             ]);
         }
