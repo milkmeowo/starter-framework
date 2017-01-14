@@ -6,6 +6,7 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
+
 namespace Milkmeowo\Framework\Base\Models\Observers;
 
 use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;

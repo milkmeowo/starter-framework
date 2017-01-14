@@ -12,34 +12,41 @@ interface RepositoryInterface extends BaseRepositoryInterface
      * @return void
      */
     public function validateCreate(array $attributes);
+
     /**
      * @param array $attributes
      * @return void
      */
     public function validateUpdate(array $attributes);
+
     /**
      * @param $validator
      * @return $this
      */
     public function setValidator($validator);
+
     /**
      * @param $results
      * @return mixed
      */
     public function present($results);
+
     /**
      * @param Model $targetModel
      * @return $this
      */
     public function setRelateModel(Model $targetModel);
+
     /**
      * @return \Prettus\Repository\Contracts\PresenterInterface
      */
     public function getPresenter();
+
     /**
      * @param array $meta
      */
     public function setPresenterMeta(array $meta);
+
     /**
      * Find data by where conditions.
      *
@@ -48,6 +55,7 @@ interface RepositoryInterface extends BaseRepositoryInterface
      * @return $this
      */
     public function where(array $where);
+
     /**
      * Retrieve first data of repository with fail if not found.
      *
@@ -56,6 +64,7 @@ interface RepositoryInterface extends BaseRepositoryInterface
      * @return mixed
      */
     public function firstOrFail($columns = ['*']);
+
     /**
      * Where first.
      *

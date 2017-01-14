@@ -2,14 +2,14 @@
 
 namespace Milkmeowo\Framework\Base\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
-use Milkmeowo\Framework\Base\Traits\BaseModelEventsTrait;
+use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Milkmeowo\Framework\Base\Traits\BaseModelEventsTrait;
+use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
 
-class BaseModel extends Model implements BaseModelEventObserverable,Transformable
+class BaseModel extends Model implements BaseModelEventObserverable, Transformable
 {
     use BaseModelEventsTrait,TransformableTrait;
 
@@ -90,6 +90,7 @@ class BaseModel extends Model implements BaseModelEventObserverable,Transformabl
     {
         return app('Dingo\Api\Auth\Auth');
     }
+
     /**
      * Update the creation and update ips.
      *

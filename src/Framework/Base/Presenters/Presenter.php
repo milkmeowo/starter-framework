@@ -3,8 +3,8 @@
 namespace Milkmeowo\Framework\Base\Presenters;
 
 use Exception;
-use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Pagination\AbstractPaginator;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 abstract class Presenter extends FractalPresenter

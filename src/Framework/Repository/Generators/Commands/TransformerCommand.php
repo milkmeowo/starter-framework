@@ -3,10 +3,10 @@
 namespace Milkmeowo\Framework\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
-use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
-use Milkmeowo\Framework\Repository\Generators\TransformerGenerator;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
+use Milkmeowo\Framework\Repository\Generators\TransformerGenerator;
+use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
 
 class TransformerCommand extends Command
 {
