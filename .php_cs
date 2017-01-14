@@ -93,7 +93,7 @@ $fixers = [
     'short_scalar_cast',
     'single_class_element_per_statement',
     'space_after_semicolon',
-    'switch_case_semicolon_to_colon'
+    'switch_case_semicolon_to_colon',
     'switch_case_space',
     'ternary_operator_spaces',
     'whitespace_after_comma_in_array',
