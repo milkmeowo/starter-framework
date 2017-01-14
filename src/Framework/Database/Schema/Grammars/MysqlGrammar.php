@@ -3,8 +3,8 @@
 namespace Milkmeowo\Framework\Database\Schema\Grammars;
 
 use Illuminate\Support\Fluent;
-use Illuminate\Database\Schema\Grammars\MySqlGrammar as BaseMySqlGrammar;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\Grammars\MySqlGrammar as BaseMySqlGrammar;
 
 class MysqlGrammar extends BaseMySqlGrammar
 {

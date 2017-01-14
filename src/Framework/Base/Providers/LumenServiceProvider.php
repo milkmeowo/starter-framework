@@ -2,14 +2,14 @@
 
 namespace Milkmeowo\Framework\Base\Providers;
 
-use Barryvdh\Cors\LumenServiceProvider as CorsServiceProvider;
 use Clockwork\Support\Lumen\ClockworkMiddleware;
 use Clockwork\Support\Lumen\ClockworkServiceProvider;
-use Dingo\Api\Http\Middleware\Request as DingoMiddlewareRequest;
 use Dingo\Api\Provider\LumenServiceProvider as DingoLumen;
+use Barryvdh\Cors\LumenServiceProvider as CorsServiceProvider;
+use Dingo\Api\Http\Middleware\Request as DingoMiddlewareRequest;
+use Milkmeowo\Framework\Dingo\Providers\LumenEventsServiceProvider as DingoEvents;
 use Dusterio\LumenPassport\PassportServiceProvider as LumenPassportServiceProvider;
 use Milkmeowo\Framework\Dingo\Providers\ExceptionHandlerServiceProvider as DingoExceptionHandler;
-use Milkmeowo\Framework\Dingo\Providers\LumenEventsServiceProvider as DingoEvents;
 
 class LumenServiceProvider extends BaseServiceProvider
 {

@@ -2,10 +2,10 @@
 
 namespace Milkmeowo\Framework\Base\Validation;
 
-use Dingo\Api\Exception\ResourceException;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\UrlGenerator;
+use Dingo\Api\Exception\ResourceException;
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
