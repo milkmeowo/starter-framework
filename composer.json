@@ -22,9 +22,9 @@
     "prettus/l5-repository": "^2.6"
   },
   "require-dev": {
-    "laravel/framework": "^5.3",
-    "laravel/lumen-framework": "5.3.*",
-    "phpunit/phpunit": "~5.4"
+    "laravel/framework": "5.4.*",
+    "laravel/lumen-framework": "5.4.*",
+    "phpunit/phpunit": "~5.7"
   },
   "autoload": {
     "psr-4": {
