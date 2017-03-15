@@ -6,6 +6,7 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
+
 namespace Milkmeowo\Framework\Dingo\Listeners;
 
 use Dingo\Api\Event\ResponseWasMorphed;

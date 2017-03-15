@@ -2,13 +2,12 @@
 
 namespace Milkmeowo\Framework\Repository\Generators;
 
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use Illuminate\Filesystem\Filesystem;
 use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
 
 abstract class Generator
 {
-
     /**
      * The filesystem instance.
      *
@@ -133,9 +132,8 @@ abstract class Generator
         return Str::studly(str_replace(' ', '/', ucwords(str_replace('/', ' ', $name))));
     }
 
-
-   /**
-     * Get application namespace
+    /**
+     * Get application namespace.
      *
      * @return string
      */
@@ -184,37 +182,37 @@ abstract class Generator
     public function getConfigGeneratorClassPath($class, $directoryPath = false)
     {
         switch ($class) {
-            case ('models' === $class):
+            case 'models' === $class:
                 $path = config('repository.generator.paths.models', 'Entities');
                 break;
-            case ('repositories' === $class):
+            case 'repositories' === $class:
                 $path = config('repository.generator.paths.repositories', 'Repositories');
                 break;
-            case ('interfaces' === $class):
+            case 'interfaces' === $class:
                 $path = config('repository.generator.paths.interfaces', 'Repositories');
                 break;
-            case ('presenters' === $class):
+            case 'presenters' === $class:
                 $path = config('repository.generator.paths.presenters', 'Presenters');
                 break;
-            case ('transformers' === $class):
+            case 'transformers' === $class:
                 $path = config('repository.generator.paths.transformers', 'Transformers');
                 break;
-            case ('validators' === $class):
+            case 'validators' === $class:
                 $path = config('repository.generator.paths.validators', 'Validators');
                 break;
-            case ('controllers' === $class):
+            case 'controllers' === $class:
                 $path = config('repository.generator.paths.controllers', 'Http\Controllers');
                 break;
-            case ('provider' === $class):
+            case 'provider' === $class:
                 $path = config('repository.generator.paths.provider', 'RepositoryServiceProvider');
                 break;
-            case ('routes.web' === $class):
+            case 'routes.web' === $class:
                 $path = config('repository.generator.paths.routes.web', 'web');
                 break;
-            case ('routes.api' === $class):
+            case 'routes.api' === $class:
                 $path = config('repository.generator.paths.routes.api', 'api');
                 break;
-            case ('criteria' === $class):
+            case 'criteria' === $class:
                 $path = config('repository.generator.paths.criteria', 'Criteria');
                 break;
             default:

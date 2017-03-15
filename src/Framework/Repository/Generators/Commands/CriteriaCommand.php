@@ -3,10 +3,10 @@
 namespace Milkmeowo\Framework\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 use Milkmeowo\Framework\Repository\Generators\CriteriaGenerator;
 use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 
 class CriteriaCommand extends Command
 {
@@ -30,6 +30,7 @@ class CriteriaCommand extends Command
      * @var string
      */
     protected $type = 'Criteria';
+
     /**
      * Execute the command.
      *

@@ -6,10 +6,11 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
+
 namespace Milkmeowo\Framework\Base\Console\Commands;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 
 class KeyGenerateCommand extends Command

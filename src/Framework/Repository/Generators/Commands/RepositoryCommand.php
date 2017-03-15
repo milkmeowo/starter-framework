@@ -2,17 +2,17 @@
 
 namespace Milkmeowo\Framework\Repository\Generators\Commands;
 
-use Milkmeowo\Framework\Repository\Generators\CriteriaGenerator;
-use Milkmeowo\Framework\Repository\Generators\SeederGenerator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
-use Milkmeowo\Framework\Repository\Generators\MigrationGenerator;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 use Milkmeowo\Framework\Repository\Generators\ModelGenerator;
+use Milkmeowo\Framework\Repository\Generators\SeederGenerator;
+use Milkmeowo\Framework\Repository\Generators\CriteriaGenerator;
+use Milkmeowo\Framework\Repository\Generators\MigrationGenerator;
 use Milkmeowo\Framework\Repository\Generators\RepositoryEloquentGenerator;
 use Milkmeowo\Framework\Repository\Generators\RepositoryInterfaceGenerator;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
+use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
 
 class RepositoryCommand extends Command
 {

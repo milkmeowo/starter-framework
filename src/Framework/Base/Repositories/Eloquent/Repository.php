@@ -2,26 +2,25 @@
 
 namespace Milkmeowo\Framework\Base\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
-use Milkmeowo\Framework\Base\Presenters\Presenter;
-use Milkmeowo\Framework\Base\Repositories\Interfaces\BaseRepositoryEventsInterface;
-use Milkmeowo\Framework\Base\Repositories\Interfaces\RepositoryInterface;
-use Milkmeowo\Framework\Base\Traits\BaseRepositoryEventsTrait;
-use Prettus\Repository\Contracts\CacheableInterface;
+use Illuminate\Database\Eloquent\Builder;
 use Prettus\Repository\Eloquent\BaseRepository;
+use Milkmeowo\Framework\Base\Presenters\Presenter;
+use Prettus\Repository\Traits\CacheableRepository;
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Events\RepositoryEntityDeleted;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
 use Prettus\Repository\Exceptions\RepositoryException;
-use Prettus\Repository\Traits\CacheableRepository;
-use Prettus\Validator\Contracts\ValidatorInterface;
+use Milkmeowo\Framework\Base\Traits\BaseRepositoryEventsTrait;
+use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
+use Milkmeowo\Framework\Base\Repositories\Interfaces\RepositoryInterface;
+use Milkmeowo\Framework\Base\Repositories\Interfaces\BaseRepositoryEventsInterface;
 
 abstract class Repository extends BaseRepository implements RepositoryInterface, CacheableInterface, BaseRepositoryEventsInterface
 {
     use CacheableRepository;
-
     /* Model Observers */
     use BaseRepositoryEventsTrait;
 
@@ -110,7 +109,6 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
      */
     public function relation()
     {
-        return;
     }
 
     /**
