@@ -6,7 +6,7 @@ vendor/
 node_modules/
 
 # Composer
-composer.lock
+# composer.lock
 
 # php-cs-fixer
 .php_cs.cache

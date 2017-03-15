@@ -2,14 +2,12 @@
 
 namespace Milkmeowo\Framework\Repository\Generators;
 
-use Illuminate\Console\AppNamespaceDetectorTrait;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
 
 abstract class Generator
 {
-    use AppNamespaceDetectorTrait;
 
     /**
      * The filesystem instance.
@@ -133,6 +131,17 @@ abstract class Generator
         }
 
         return Str::studly(str_replace(' ', '/', ucwords(str_replace('/', ' ', $name))));
+    }
+
+
+   /**
+     * Get application namespace
+     *
+     * @return string
+     */
+    public function getAppNamespace()
+    {
+        return \Illuminate\Container\Container::getInstance()->getNamespace();
     }
 
     /**
