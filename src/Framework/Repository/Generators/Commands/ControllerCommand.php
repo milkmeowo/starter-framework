@@ -2,12 +2,12 @@
 
 namespace Milkmeowo\Framework\Repository\Generators\Commands;
 
-use Milkmeowo\Framework\Repository\Generators\RoutesGenerator;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
+use Milkmeowo\Framework\Repository\Generators\RoutesGenerator;
 use Milkmeowo\Framework\Repository\Generators\ControllerGenerator;
 use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 
 class ControllerCommand extends Command
 {

@@ -6,6 +6,7 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
+
 namespace Milkmeowo\Framework\Base\Providers;
 
 use Illuminate\Support\ServiceProvider;

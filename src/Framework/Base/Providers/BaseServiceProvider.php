@@ -6,13 +6,14 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
+
 namespace Milkmeowo\Framework\Base\Providers;
 
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Passport\PassportServiceProvider as LaravelPassportServiceProvider;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Milkmeowo\Framework\Database\Providers\DatabaseServiceProvider;
 use Milkmeowo\Framework\Repository\Providers\RepositoryServiceProvider;
+use Laravel\Passport\PassportServiceProvider as LaravelPassportServiceProvider;
 
 class BaseServiceProvider extends ServiceProvider
 {
