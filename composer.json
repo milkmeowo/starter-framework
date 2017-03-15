@@ -12,13 +12,13 @@
   ],
   "require": {
     "php": ">=5.6.4",
-    "barryvdh/laravel-cors": "^0.8.2",
-    "barryvdh/laravel-ide-helper": "^2.2",
+    "barryvdh/laravel-cors": "^0.8.6",
+    "barryvdh/laravel-ide-helper": "^2.3",
     "dingo/api": "1.0.x@dev",
     "doctrine/dbal": "^2.5",
-    "dusterio/lumen-passport": "^0.1.7",
-    "itsgoingd/clockwork": "^1.12",
-    "league/fractal": "^0.14.0",
+    "dusterio/lumen-passport": "^0.1.9",
+    "itsgoingd/clockwork": "^1.13",
+    "league/fractal": "^0.15.0",
     "overtrue/wechat": "^3.2",
     "prettus/l5-repository": "^2.6"
   },
@@ -38,6 +38,5 @@
   "config": {
     "sort-packages": true,
     "preferred-install": "dist"
-  },
-  "minimum-stability": "dev"
+  }
 }
