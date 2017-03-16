@@ -3,7 +3,6 @@
 namespace Milkmeowo\Framework\Repository\Generators;
 
 use Milkmeowo\Framework\Repository\Generators\Migrations\RulesParser;
-use Milkmeowo\Framework\Repository\Generators\Migrations\SchemaParser;
 
 class ValidatorGenerator extends Generator
 {
@@ -88,7 +87,7 @@ class ValidatorGenerator extends Generator
     /**
      * Get schema parser.
      *
-     * @return SchemaParser
+     * @return RulesParser
      */
     public function getSchemaParser()
     {

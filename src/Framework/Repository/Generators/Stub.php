@@ -107,7 +107,7 @@ class Stub
     /**
      * Get stub contents.
      *
-     * @return mixed|string
+     * @return string
      */
     public function getContents()
     {

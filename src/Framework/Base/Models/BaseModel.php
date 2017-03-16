@@ -11,7 +11,7 @@ use Milkmeowo\Framework\Base\Models\Contracts\BaseModelEventObserverable;
 
 class BaseModel extends Model implements BaseModelEventObserverable, Transformable
 {
-    use BaseModelEventsTrait,TransformableTrait;
+    use BaseModelEventsTrait, TransformableTrait;
 
     /**
      * Indicates if the model should be auto set user_id.
@@ -196,7 +196,7 @@ class BaseModel extends Model implements BaseModelEventObserverable, Transformab
     /**
      * check column exist in table.
      *
-     * @param $column
+     * @param string $column
      *
      * @return bool
      */
