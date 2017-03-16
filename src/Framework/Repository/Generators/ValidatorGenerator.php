@@ -3,7 +3,6 @@
 namespace Milkmeowo\Framework\Repository\Generators;
 
 use Milkmeowo\Framework\Repository\Generators\Migrations\RulesParser;
-use Milkmeowo\Framework\Repository\Generators\Migrations\SchemaParser;
 
 class ValidatorGenerator extends Generator
 {

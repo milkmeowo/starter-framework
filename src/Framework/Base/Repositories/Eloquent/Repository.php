@@ -93,7 +93,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     public function makeModel()
     {
         $model = $this->relateModel ? $this->relation() : $this->app->make($this->model());
-        if (!($model instanceof Model || $model instanceof Relation)) {
+        if (! ($model instanceof Model || $model instanceof Relation)) {
             throw new RepositoryException('Class '.get_class($model).' must be an instance of Illuminate\\Database\\Eloquent\\Model');
         }
 
@@ -359,7 +359,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
      *
      * @param array $where
      *
-     * @return null|boolean
+     * @return null|bool
      */
     public function forceDeleteWhere(array $where)
     {
