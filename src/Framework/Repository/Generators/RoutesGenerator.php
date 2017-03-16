@@ -63,6 +63,7 @@ class RoutesGenerator extends Generator
     /**
      * Get stub template for generated file.
      *
+     * @param string $stub
      * @return string
      */
     public function getStub($stub = null)
