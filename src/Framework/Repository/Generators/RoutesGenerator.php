@@ -6,7 +6,6 @@ use Illuminate\Filesystem\Filesystem;
 
 class RoutesGenerator extends Generator
 {
-
     public $routesPlaceholder = '//:end-routes:';
 
     /**
@@ -68,10 +67,10 @@ class RoutesGenerator extends Generator
      */
     public function getStub($stub = null)
     {
-        $stub = isset( $stub ) ? $stub : $this->stub;
+        $stub = isset($stub) ? $stub : $this->stub;
         $path = config('repository.generator.stubsOverridePath', __DIR__);
 
-        if ( ! file_exists($path.'/Stubs/'.$stub.'.stub')) {
+        if (! file_exists($path.'/Stubs/'.$stub.'.stub')) {
             $path = __DIR__;
         }
 

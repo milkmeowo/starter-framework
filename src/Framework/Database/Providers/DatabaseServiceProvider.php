@@ -2,13 +2,12 @@
 
 namespace Milkmeowo\Framework\Database\Providers;
 
+use LogicException;
 use Illuminate\Database\Connection;
 use Illuminate\Support\ServiceProvider;
-use LogicException;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
-
     /**
      * Resolve the connection via bindings.
      *
@@ -35,7 +34,6 @@ class DatabaseServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerConnections();
-
     }
 
     /**

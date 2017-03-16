@@ -6,10 +6,9 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
-
-if ( ! function_exists('is_lumen')) {
+if (! function_exists('is_lumen')) {
     /**
-     * Checks whether or not the application is Lumen
+     * Checks whether or not the application is Lumen.
      *
      * @return bool
      */
@@ -21,9 +20,9 @@ if ( ! function_exists('is_lumen')) {
         return $is_lumen;
     }
 }
-if ( ! function_exists('is_laravel')) {
+if (! function_exists('is_laravel')) {
     /**
-     * Checks whether or not the application is Laravel
+     * Checks whether or not the application is Laravel.
      *
      * @return bool
      */
@@ -33,7 +32,7 @@ if ( ! function_exists('is_laravel')) {
     }
 }
 
-if ( ! function_exists('app_path')) {
+if (! function_exists('app_path')) {
     /**
      * Get the path to the application folder.
      *
@@ -43,11 +42,11 @@ if ( ! function_exists('app_path')) {
      */
     function app_path($path = '')
     {
-        return app('path').( $path ? DIRECTORY_SEPARATOR.$path : $path );
+        return app('path').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
-if ( ! function_exists('bcrypt')) {
+if (! function_exists('bcrypt')) {
     /**
      * Hash the given value.
      *
@@ -62,7 +61,7 @@ if ( ! function_exists('bcrypt')) {
     }
 }
 
-if ( ! function_exists('smart_get_client_ip')) {
+if (! function_exists('smart_get_client_ip')) {
 
     /**
      * @return array|string
@@ -71,7 +70,7 @@ if ( ! function_exists('smart_get_client_ip')) {
     {
         $request = app('request');
         $clientIp = $request->header('X-Client-Ip');
-        if (empty( $clientIp )) {
+        if (empty($clientIp)) {
             $clientIp = $request->getClientIp(true);
         }
 
