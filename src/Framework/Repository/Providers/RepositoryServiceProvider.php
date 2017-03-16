@@ -14,10 +14,10 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            base_path('vendor/prettus/l5-repository/src/resources/config/repository.php') => base_path('config/repository.php'),
+            base_path('vendor/milkmeowo/starter-framework/config/repository.php') => base_path('config/repository.php'),
         ]);
 
-        $this->mergeConfigFrom(base_path('vendor/prettus/l5-repository/src/resources/config/repository.php'), 'repository');
+        $this->mergeConfigFrom(base_path('vendor/milkmeowo/starter-framework/config/repository.php'), 'repository');
 
         $this->loadTranslationsFrom(base_path('vendor/prettus/l5-repository/src/resources/lang'), 'repository');
     }
@@ -29,6 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\BaseInitCommand');
         $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\RepositoryCommand');
         $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\TransformerCommand');
         $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\PresenterCommand');
