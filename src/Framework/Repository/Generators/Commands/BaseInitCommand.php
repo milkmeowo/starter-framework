@@ -10,7 +10,7 @@
 namespace Milkmeowo\Framework\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Filesystem\Filesystem;
 use Milkmeowo\Framework\Repository\Generators\ControllerGenerator;
 use Milkmeowo\Framework\Repository\Generators\ModelGenerator;
 use Milkmeowo\Framework\Repository\Generators\PresenterGenerator;
@@ -193,7 +193,7 @@ class BaseInitCommand extends Command
 
     public function getStub($stub)
     {
-        return file_get_contents($this->getPath($stub));
+        return $this->filesystem->get($this->getPath($stub));
     }
 
 }
