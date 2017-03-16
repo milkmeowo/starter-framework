@@ -2,13 +2,13 @@
 
 namespace Milkmeowo\Framework\Database\Connection;
 
-use Illuminate\Database\Schema\MySqlBuilder;
+use Illuminate\Database\MySqlConnection as BaseMySqlConnection;
 use Milkmeowo\Framework\Database\Schema\Blueprint;
 use Milkmeowo\Framework\Database\Schema\Grammars\MysqlGrammar;
-use Illuminate\Database\MySqlConnection as BaseMySqlConnection;
 
 class MysqlConnection extends BaseMySqlConnection
 {
+
     /**
      * Get a schema builder instance for the connection.
      *
@@ -16,11 +16,9 @@ class MysqlConnection extends BaseMySqlConnection
      */
     public function getSchemaBuilder()
     {
-        if (is_null($this->schemaGrammar)) {
-            $this->useDefaultSchemaGrammar();
-        }
+        $builder = parent::getSchemaBuilder();
 
-        $builder = new MySqlBuilder($this);
+        // add a blueprint resolver closure that returns the custom blueprint
         $builder->blueprintResolver(function ($table, $callback) {
             return new Blueprint($table, $callback);
         });
