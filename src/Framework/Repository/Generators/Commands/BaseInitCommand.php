@@ -54,7 +54,7 @@ class BaseInitCommand extends Command
         'http.controller.lumen'   => 'Http/LumenBaseController',
         'model'                   => 'Models/BaseModel',
         'presenter'               => 'Presenters/BasePresenter',
-        'repositories.eloquent'   => 'Repositories/Eloquent/BasePresenter',
+        'repositories.eloquent'   => 'Repositories/Eloquent/BaseRepository',
         'repositories.interfaces' => 'Repositories/Interfaces/BaseRepositoryInterface',
         'transformer' => 'Transformers/BaseTransformer',
     ];
@@ -115,6 +115,7 @@ class BaseInitCommand extends Command
     public function generateModel()
     {
         $stub = $this->stubs['model'];
+        $stub = $this->getStub($stub);
         $generator = new ModelGenerator([ 'name' => 'BaseModel' ]);
         $namespace = $generator->getNamespace();
         $path = $generator->getPath();
@@ -125,6 +126,7 @@ class BaseInitCommand extends Command
     public function generatePresenters()
     {
         $stub = $this->stubs['presenter'];
+        $stub = $this->getStub($stub);
         $generator = new PresenterGenerator([ 'name' => 'Base' ]);
         $namespace = $generator->getNamespace();
         $path = $generator->getPath();
@@ -135,6 +137,7 @@ class BaseInitCommand extends Command
     public function generateRepositoriesEloquent()
     {
         $stub = $this->stubs['repositories.eloquent'];
+        $stub = $this->getStub($stub);
         $generator = new RepositoryEloquentGenerator([ 'name' => 'Base' ]);
         $namespace = $generator->getNamespace();
         $path = $generator->getBasePath().'/'.$generator->getConfigGeneratorClassPath($generator->getPathConfigNode(),
@@ -146,6 +149,7 @@ class BaseInitCommand extends Command
     public function generateRepositoriesInterfaces()
     {
         $stub = $this->stubs['repositories.interfaces'];
+        $stub = $this->getStub($stub);
         $generator = new RepositoryInterfaceGenerator([ 'name' => 'Base' ]);
         $namespace = $generator->getNamespace();
         $path = $generator->getBasePath().'/'.$generator->getConfigGeneratorClassPath($generator->getPathConfigNode(),
@@ -157,6 +161,7 @@ class BaseInitCommand extends Command
     public function generateTransformer()
     {
         $stub = $this->stubs['transformer'];
+        $stub = $this->getStub($stub);
         $generator = new TransformerGenerator([ 'name' => 'Base' ]);
         $namespace = $generator->getNamespace();
         $path = $generator->getPath();
