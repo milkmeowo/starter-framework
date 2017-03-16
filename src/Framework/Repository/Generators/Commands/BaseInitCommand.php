@@ -174,7 +174,9 @@ class BaseInitCommand extends Command
             }
 
             $this->filesystem->put($path, $content);
-            $this->info($path ."\n generate success");
+            $this->line('---------------');
+            $this->info($path ." generated");
+            $this->line('---------------');
         }
     }
 
@@ -194,6 +196,18 @@ class BaseInitCommand extends Command
     public function getStub($stub)
     {
         return $this->filesystem->get($this->getPath($stub));
+    }
+
+    /**
+     * Get command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['force', 'f', InputOption::VALUE_NONE, 'Overwrite existing base files'],
+        ];
     }
 
 }
