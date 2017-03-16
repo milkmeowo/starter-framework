@@ -88,7 +88,7 @@ class ValidatorGenerator extends Generator
     /**
      * Get schema parser.
      *
-     * @return SchemaParser
+     * @return RulesParser
      */
     public function getSchemaParser()
     {

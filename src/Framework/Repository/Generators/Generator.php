@@ -175,7 +175,7 @@ abstract class Generator
     /**
      * Get class-specific output paths.
      *
-     * @param $class
+     * @param string $class
      *
      * @return string
      */

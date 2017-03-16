@@ -93,12 +93,12 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     public function makeModel()
     {
         $model = $this->relateModel ? $this->relation() : $this->app->make($this->model());
-        if (! ($model instanceof Model || $model instanceof Relation)) {
+        if (!($model instanceof Model || $model instanceof Relation)) {
             throw new RepositoryException('Class '.get_class($model).' must be an instance of Illuminate\\Database\\Eloquent\\Model');
         }
 
         if ($model instanceof BaseModelEventObserverable) {
-            $model->setRepository($this);    //set repository
+            $model->setRepository($this); //set repository
         }
 
         return $this->model = $model;
@@ -186,7 +186,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     /**
      * Retrieve first data of repository with fail if not found.
      *
-     * @param array $columns
+     * @param string[] $columns
      *
      * @return mixed
      */
@@ -359,7 +359,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
      *
      * @param array $where
      *
-     * @return int
+     * @return null|boolean
      */
     public function forceDeleteWhere(array $where)
     {
