@@ -6,10 +6,11 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
+
 namespace Milkmeowo\Framework\Dingo\Providers;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Milkmeowo\Framework\Dingo\Listeners\AddPaginationLinksToResponse;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class LaravelEventsServiceProvider extends ServiceProvider
 {

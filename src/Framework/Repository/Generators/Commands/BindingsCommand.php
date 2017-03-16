@@ -4,10 +4,10 @@ namespace Milkmeowo\Framework\Repository\Generators\Commands;
 
 use File;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 use Milkmeowo\Framework\Repository\Generators\BindingsGenerator;
 use Milkmeowo\Framework\Repository\Generators\Exceptions\FileAlreadyExistsException;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 
 class BindingsCommand extends Command
 {

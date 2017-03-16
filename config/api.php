@@ -169,8 +169,9 @@ return [
     */
 
     'auth' => [
-        Milkmeowo\Framework\Dingo\Auth\Providers\OAuth2::class,
-        Milkmeowo\Framework\Dingo\Auth\Providers\Passport::class,
+        'passport' => \Milkmeowo\Framework\Dingo\Auth\Providers\Passport::class,
+        //'oauth' => Milkmeowo\Framework\Dingo\Auth\Providers\OAuth2::class,
+        //'jwt' => Dingo\Api\Auth\Provider\JWT::class,
     ],
 
     /*

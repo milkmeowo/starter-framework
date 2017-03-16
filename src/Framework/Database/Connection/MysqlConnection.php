@@ -2,10 +2,10 @@
 
 namespace Milkmeowo\Framework\Database\Connection;
 
-use Illuminate\Database\MySqlConnection as BaseMySqlConnection;
 use Illuminate\Database\Schema\MySqlBuilder;
-use Milkmeowo\Framework\Database\Schema\Grammars\MysqlGrammar;
 use Milkmeowo\Framework\Database\Schema\Blueprint;
+use Milkmeowo\Framework\Database\Schema\Grammars\MysqlGrammar;
+use Illuminate\Database\MySqlConnection as BaseMySqlConnection;
 
 class MysqlConnection extends BaseMySqlConnection
 {

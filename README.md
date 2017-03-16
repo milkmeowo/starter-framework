@@ -1,10 +1,9 @@
 # starter-framework
 
 [![Latest Stable Version](https://poser.pugx.org/milkmeowo/starter-framework/v/stable)](https://packagist.org/packages/milkmeowo/starter-framework)
-[![Total Downloads](https://poser.pugx.org/milkmeowo/starter-framework/downloads)](https://packagist.org/packages/milkmeowo/starter-framework)
 [![Latest Unstable Version](https://poser.pugx.org/milkmeowo/starter-framework/v/unstable)](https://packagist.org/packages/milkmeowo/starter-framework)
-[![composer.lock](https://poser.pugx.org/milkmeowo/starter-framework/composerlock)](https://packagist.org/packages/milkmeowo/starter-framework)
-[![StyleCI](https://styleci.io/repos/78735158/shield)](https://styleci.io/repos/78735158)
+[![Total Downloads](https://poser.pugx.org/milkmeowo/starter-framework/downloads)](https://packagist.org/packages/milkmeowo/starter-framework)
+[![StyleCI](https://styleci.io/repos/78735158/shield?branch=master)](https://styleci.io/repos/78735158)
 [![Code Climate](https://codeclimate.com/github/milkmeowo/starter-framework/badges/gpa.svg)](https://codeclimate.com/github/milkmeowo/starter-framework)
 [![Analytics](https://ga-beacon.appspot.com/UA-93763118-1/milkmeowo/starter-framework/readme)](https://packagist.org/packages/milkmeowo/starter-framework)
 [![License](https://poser.pugx.org/milkmeowo/starter-framework/license)](https://packagist.org/packages/milkmeowo/starter-framework)
