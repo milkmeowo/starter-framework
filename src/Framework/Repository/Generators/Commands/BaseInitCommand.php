@@ -166,7 +166,7 @@ class BaseInitCommand extends Command
 
     public function generateFile($path, $stub, $namespace)
     {
-        if ( ! $this->filesystem->exists($path) || $this->option('force') || $this->confirm($path.'already exists! Do you wish to continue?')) {
+        if ( ! $this->filesystem->exists($path) || $this->confirm($path.' already exists! Continue?')) {
             $content = str_replace('$NAMESPACE$', $namespace, $stub);
 
             if (! $this->filesystem->isDirectory($dir = dirname($path))) {
@@ -196,18 +196,6 @@ class BaseInitCommand extends Command
     public function getStub($stub)
     {
         return $this->filesystem->get($this->getPath($stub));
-    }
-
-    /**
-     * Get command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            ['force', 'f', InputOption::VALUE_NONE, 'Overwrite existing base files'],
-        ];
     }
 
 }
