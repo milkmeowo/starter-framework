@@ -21,7 +21,7 @@ class LaravelServiceProvider extends BaseServiceProvider
 
     protected function bootMiddleware()
     {
-        $httpKernel = app('\Illuminate\Contracts\Http\Kernel');
+        $httpKernel = app('Illuminate\Contracts\Http\Kernel');
         // Global middleware
         if ($this->app->environment() !== 'production') {
             $httpKernel->pushMiddleware([
