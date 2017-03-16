@@ -6,7 +6,9 @@ use Illuminate\Filesystem\Filesystem;
 
 class RoutesGenerator extends Generator
 {
+
     public $routesPlaceholder = '//:end-routes:';
+
     /**
      * Get stub name.
      *
@@ -14,7 +16,9 @@ class RoutesGenerator extends Generator
      */
     protected $stub = 'routes/web';
 
-    protected $webStub = 'routes/web';
+    protected $webLumenStub = 'routes/web.lumen';
+
+    protected $webLaravelStub = 'routes/web.laravel';
 
     protected $apiStub = 'routes/api';
 
@@ -26,28 +30,15 @@ class RoutesGenerator extends Generator
     {
         $filesystem = new Filesystem();
 
+        $webStub = is_lumen() ? $this->webLumenStub : $this->webLaravelStub;
+
         $webRoute = $filesystem->get($this->getWebPath());
-        $filesystem->put($this->getWebPath(), str_replace($this->routesPlaceholder, $this->getStub($this->webStub), $webRoute));
+        $filesystem->put($this->getWebPath(),
+            str_replace($this->routesPlaceholder, $this->getStub($webStub), $webRoute));
 
         $apiRoute = $filesystem->get($this->getApiPath());
-        $filesystem->put($this->getApiPath(), str_replace($this->routesPlaceholder, $this->getStub($this->apiStub), $apiRoute));
-    }
-
-    /**
-     * Get stub template for generated file.
-     *
-     * @return string
-     */
-    public function getStub($stub = null)
-    {
-        $stub = isset($stub) ? $stub : $this->stub;
-        $path = config('repository.generator.stubsOverridePath', __DIR__);
-
-        if (! file_exists($path.'/Stubs/'.$stub.'.stub')) {
-            $path = __DIR__;
-        }
-
-        return (new Stub($path.'/Stubs/'.$stub.'.stub', $this->getReplacements()))->render();
+        $filesystem->put($this->getApiPath(),
+            str_replace($this->routesPlaceholder, $this->getStub($this->apiStub), $apiRoute));
     }
 
     /**
@@ -60,11 +51,6 @@ class RoutesGenerator extends Generator
         return $this->getBasePath().'/'.parent::getConfigGeneratorClassPath($this->webPathConfigNode, true).'.php';
     }
 
-    public function getApiPath()
-    {
-        return $this->getBasePath().'/'.parent::getConfigGeneratorClassPath($this->apiPathConfigNode, true).'.php';
-    }
-
     /**
      * Get base path of destination file.
      *
@@ -73,6 +59,32 @@ class RoutesGenerator extends Generator
     public function getBasePath()
     {
         return app()->basePath().'/routes';
+    }
+
+    /**
+     * Get stub template for generated file.
+     *
+     * @return string
+     */
+    public function getStub($stub = null)
+    {
+        $stub = isset( $stub ) ? $stub : $this->stub;
+        $path = config('repository.generator.stubsOverridePath', __DIR__);
+
+        if ( ! file_exists($path.'/Stubs/'.$stub.'.stub')) {
+            $path = __DIR__;
+        }
+
+        return ( new Stub($path.'/Stubs/'.$stub.'.stub', $this->getReplacements()) )->render();
+    }
+
+    public function getReplacements()
+    {
+        return array_merge(parent::getReplacements(), [
+            'lowerclass'  => str_plural(strtolower($this->getClass())),
+            'controller'  => $this->getControllerName(),
+            'placeholder' => $this->routesPlaceholder,
+        ]);
     }
 
     public function getControllerName()
@@ -86,13 +98,9 @@ class RoutesGenerator extends Generator
         return $controllerName;
     }
 
-    public function getReplacements()
+    public function getApiPath()
     {
-        return array_merge(parent::getReplacements(), [
-            'lowerclass' => str_plural(strtolower($this->getClass())),
-            'controller' => $this->getControllerName(),
-            'placeholder' => $this->routesPlaceholder,
-        ]);
+        return $this->getBasePath().'/'.parent::getConfigGeneratorClassPath($this->apiPathConfigNode, true).'.php';
     }
 
     public function getPathConfigNode()
