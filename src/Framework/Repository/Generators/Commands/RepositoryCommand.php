@@ -75,10 +75,10 @@ class RepositoryCommand extends Command
             'force' => $this->option('force'),
         ]));
 
-        $this->generators->push(new CriteriaGenerator([
-            'name'  => $this->argument('name'),
-            'force' => $this->option('force'),
-        ]));
+        //$this->generators->push(new CriteriaGenerator([
+        //    'name'  => $this->argument('name'),
+        //    'force' => $this->option('force'),
+        //]));
 
         foreach ($this->generators as $generator) {
             $generator->run();
