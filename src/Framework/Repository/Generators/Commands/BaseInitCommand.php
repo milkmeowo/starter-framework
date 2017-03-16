@@ -168,17 +168,24 @@ class BaseInitCommand extends Command
     {
         if ( ! $this->filesystem->exists($path) || $this->option('force') || $this->confirm($path.'already exists! Do you wish to continue?')) {
             $content = str_replace('$NAMESPACE$', $namespace, $stub);
+
+            if (! $this->filesystem->isDirectory($dir = dirname($path))) {
+                $this->filesystem->makeDirectory($dir, 0777, true, true);
+            }
+
             $this->filesystem->put($path, $content);
+            $this->info($path ."\n generate success");
         }
     }
 
     public function getPath($stub)
     {
-        $path = config('repository.generator.stubsOverridePath', __DIR__);
+        $defaultPath = dirname(__DIR__);
+        $path = config('repository.generator.stubsOverridePath', $defaultPath);
 
         // rollback
         if ( ! file_exists($path.'/Stubs/base/'.$stub.'.stub')) {
-            $path = __DIR__;
+            $path = $defaultPath;
         }
 
         return $path.'/Stubs/base/'.$stub.'.stub';
@@ -186,7 +193,7 @@ class BaseInitCommand extends Command
 
     public function getStub($stub)
     {
-        return $this->filesystem->get($this->getPath($stub));
+        return file_get_contents($this->getPath($stub));
     }
 
 }
