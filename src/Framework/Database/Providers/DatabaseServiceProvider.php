@@ -9,6 +9,8 @@ class DatabaseServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('db.connection.mysql', MysqlConnection::class);
+        Connection::resolverFor('mysql', function ($connection, $database, $prefix, $config) {
+            return new MysqlConnection($connection, $database, $prefix, $config);
+        });
     }
 }
