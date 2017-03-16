@@ -5,6 +5,8 @@
 [![Total Downloads](https://poser.pugx.org/milkmeowo/starter-framework/downloads)](https://packagist.org/packages/milkmeowo/starter-framework)
 [![StyleCI](https://styleci.io/repos/78735158/shield?branch=master)](https://styleci.io/repos/78735158)
 [![Code Climate](https://codeclimate.com/github/milkmeowo/starter-framework/badges/gpa.svg)](https://codeclimate.com/github/milkmeowo/starter-framework)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/milkmeowo/starter-framework/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/milkmeowo/starter-framework/?branch=develop)
+[![Build Status](https://scrutinizer-ci.com/g/milkmeowo/starter-framework/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/milkmeowo/starter-framework/build-status/develop)
 [![Analytics](https://ga-beacon.appspot.com/UA-93763118-1/milkmeowo/starter-framework/readme)](https://packagist.org/packages/milkmeowo/starter-framework)
 [![License](https://poser.pugx.org/milkmeowo/starter-framework/license)](https://packagist.org/packages/milkmeowo/starter-framework)
 
