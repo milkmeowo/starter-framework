@@ -168,6 +168,11 @@ class BaseInitCommand extends Command
         $this->generateFile($path, $stub, $namespace);
     }
 
+    /**
+     * @param string $path
+     * @param string $stub
+     * @param null|string $namespace
+     */
     public function generateFile($path, $stub, $namespace)
     {
         if (! $this->filesystem->exists($path) || $this->confirm($path.' already exists! Continue?')) {
@@ -197,6 +202,9 @@ class BaseInitCommand extends Command
         return $path.'/Stubs/base/'.$stub.'.stub';
     }
 
+    /**
+     * @param string $stub
+     */
     public function getStub($stub)
     {
         return $this->filesystem->get($this->getPath($stub));

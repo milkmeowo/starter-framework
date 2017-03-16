@@ -45,7 +45,7 @@ class RepositoryCommand extends Command
     /**
      * Execute the command.
      *
-     * @return void
+     * @return null|false
      */
     public function fire()
     {
