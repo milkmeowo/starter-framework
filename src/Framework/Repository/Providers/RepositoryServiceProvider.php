@@ -30,6 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\BaseInitCommand');
+        $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\RouteCommand');
         $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\RepositoryCommand');
         $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\TransformerCommand');
         $this->commands('Milkmeowo\Framework\Repository\Generators\Commands\PresenterCommand');
