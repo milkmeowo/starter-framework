@@ -98,7 +98,7 @@ class MigrationGenerator extends Generator
     /**
      * Get stub templates.
      *
-     * @return string
+     * @return Stub
      */
     public function getStub()
     {

@@ -98,7 +98,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
         }
 
         if ($model instanceof BaseModelEventObserverable) {
-            $model->setRepository($this);    //set repository
+            $model->setRepository($this); //set repository
         }
 
         return $this->model = $model;
@@ -186,7 +186,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     /**
      * Retrieve first data of repository with fail if not found.
      *
-     * @param array $columns
+     * @param string[] $columns
      *
      * @return mixed
      */
@@ -359,7 +359,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
      *
      * @param array $where
      *
-     * @return int
+     * @return null|bool
      */
     public function forceDeleteWhere(array $where)
     {

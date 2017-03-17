@@ -48,7 +48,7 @@ class ControllerCommand extends Command
         } catch (FileAlreadyExistsException $e) {
             $this->error($this->type.' already exists!');
 
-            return false;
+            //return false;
         }
 
         (new RoutesGenerator([

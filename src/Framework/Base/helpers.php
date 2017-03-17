@@ -6,6 +6,32 @@
  *
  * @author Milkmeowo <milkmeowo@gmail.com>
  */
+if (! function_exists('is_lumen')) {
+    /**
+     * Checks whether or not the application is Lumen.
+     *
+     * @return bool
+     */
+    function is_lumen()
+    {
+        $version = app()->version();
+        $is_lumen = str_contains($version, 'Lumen');
+
+        return $is_lumen;
+    }
+}
+if (! function_exists('is_laravel')) {
+    /**
+     * Checks whether or not the application is Laravel.
+     *
+     * @return bool
+     */
+    function is_laravel()
+    {
+        return ! is_lumen();
+    }
+}
+
 if (! function_exists('app_path')) {
     /**
      * Get the path to the application folder.
@@ -24,8 +50,9 @@ if (! function_exists('bcrypt')) {
     /**
      * Hash the given value.
      *
-     * @param  string  $value
-     * @param  array   $options
+     * @param  string $value
+     * @param  array  $options
+     *
      * @return string
      */
     function bcrypt($value, $options = [])

@@ -1,0 +1,10 @@
+<?php
+
+$NAMESPACE$
+
+use Milkmeowo\Framework\Base\Api\Controllers\LumenController;
+
+class BaseController extends LumenController
+{
+    //
+}

@@ -98,7 +98,7 @@ class NameParser
     /**
      * Get matches data from regex.
      *
-     * @return array
+     * @return string[]
      */
     public function getMatches()
     {
