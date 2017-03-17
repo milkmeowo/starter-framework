@@ -231,6 +231,8 @@ return [
             'controllers'  => 'Api\Controllers\V1',
             'provider'     => 'RepositoryServiceProvider',
             'criteria'     => 'Repositories\Criteria',
+            'routes.web'   => 'web',
+            'routes.api'   => 'api',
             'stubsOverridePath' => app()->path(),
         ],
     ],
