@@ -1,6 +1,6 @@
 <?php
 /**
- * BaseInitCommand.php
+ * BaseInitCommand.php.
  *
  * Description
  *
@@ -11,16 +11,15 @@ namespace Milkmeowo\Framework\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Milkmeowo\Framework\Repository\Generators\ControllerGenerator;
 use Milkmeowo\Framework\Repository\Generators\ModelGenerator;
 use Milkmeowo\Framework\Repository\Generators\PresenterGenerator;
+use Milkmeowo\Framework\Repository\Generators\ControllerGenerator;
+use Milkmeowo\Framework\Repository\Generators\TransformerGenerator;
 use Milkmeowo\Framework\Repository\Generators\RepositoryEloquentGenerator;
 use Milkmeowo\Framework\Repository\Generators\RepositoryInterfaceGenerator;
-use Milkmeowo\Framework\Repository\Generators\TransformerGenerator;
 
 class BaseInitCommand extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -93,7 +92,7 @@ class BaseInitCommand extends Command
         $stub = is_lumen() ? $this->stubs['api.controller.lumen'] : $this->stubs['api.controller.laravel'];
         $stub = $this->getStub($stub);
 
-        $controllerGenerator = new ControllerGenerator([ 'name' => 'Base' ]);
+        $controllerGenerator = new ControllerGenerator(['name' => 'Base']);
         $namespace = $controllerGenerator->getNamespace();
 
         $path = $controllerGenerator->getBasePath().'/'.$controllerGenerator->getConfigGeneratorClassPath($controllerGenerator->getPathConfigNode(),
@@ -116,7 +115,7 @@ class BaseInitCommand extends Command
     {
         $stub = $this->stubs['model'];
         $stub = $this->getStub($stub);
-        $generator = new ModelGenerator([ 'name' => 'BaseModel' ]);
+        $generator = new ModelGenerator(['name' => 'BaseModel']);
         $namespace = $generator->getNamespace();
         $path = $generator->getPath();
 
@@ -127,7 +126,7 @@ class BaseInitCommand extends Command
     {
         $stub = $this->stubs['presenter'];
         $stub = $this->getStub($stub);
-        $generator = new PresenterGenerator([ 'name' => 'Base' ]);
+        $generator = new PresenterGenerator(['name' => 'Base']);
         $namespace = $generator->getNamespace();
         $path = $generator->getPath();
 
@@ -138,7 +137,7 @@ class BaseInitCommand extends Command
     {
         $stub = $this->stubs['repositories.eloquent'];
         $stub = $this->getStub($stub);
-        $generator = new RepositoryEloquentGenerator([ 'name' => 'Base' ]);
+        $generator = new RepositoryEloquentGenerator(['name' => 'Base']);
         $namespace = $generator->getNamespace();
         $path = $generator->getBasePath().'/'.$generator->getConfigGeneratorClassPath($generator->getPathConfigNode(),
                 true).'/BaseRepository.php';
@@ -150,7 +149,7 @@ class BaseInitCommand extends Command
     {
         $stub = $this->stubs['repositories.interfaces'];
         $stub = $this->getStub($stub);
-        $generator = new RepositoryInterfaceGenerator([ 'name' => 'Base' ]);
+        $generator = new RepositoryInterfaceGenerator(['name' => 'Base']);
         $namespace = $generator->getNamespace();
         $path = $generator->getBasePath().'/'.$generator->getConfigGeneratorClassPath($generator->getPathConfigNode(),
                 true).'/BaseRepositoryInterface.php';
@@ -162,16 +161,21 @@ class BaseInitCommand extends Command
     {
         $stub = $this->stubs['transformer'];
         $stub = $this->getStub($stub);
-        $generator = new TransformerGenerator([ 'name' => 'Base' ]);
+        $generator = new TransformerGenerator(['name' => 'Base']);
         $namespace = $generator->getNamespace();
         $path = $generator->getPath();
 
         $this->generateFile($path, $stub, $namespace);
     }
 
+    /**
+     * @param string $path
+     * @param string $stub
+     * @param null|string $namespace
+     */
     public function generateFile($path, $stub, $namespace)
     {
-        if ( ! $this->filesystem->exists($path) || $this->confirm($path.' already exists! Continue?')) {
+        if (! $this->filesystem->exists($path) || $this->confirm($path.' already exists! Continue?')) {
             $content = str_replace('$NAMESPACE$', $namespace, $stub);
 
             if (! $this->filesystem->isDirectory($dir = dirname($path))) {
@@ -180,7 +184,7 @@ class BaseInitCommand extends Command
 
             $this->filesystem->put($path, $content);
             $this->line('---------------');
-            $this->info($path ." generated");
+            $this->info($path.' generated');
             $this->line('---------------');
         }
     }
@@ -191,16 +195,18 @@ class BaseInitCommand extends Command
         $path = config('repository.generator.stubsOverridePath', $defaultPath);
 
         // rollback
-        if ( ! file_exists($path.'/Stubs/base/'.$stub.'.stub')) {
+        if (! file_exists($path.'/Stubs/base/'.$stub.'.stub')) {
             $path = $defaultPath;
         }
 
         return $path.'/Stubs/base/'.$stub.'.stub';
     }
 
+    /**
+     * @param string $stub
+     */
     public function getStub($stub)
     {
         return $this->filesystem->get($this->getPath($stub));
     }
-
 }
