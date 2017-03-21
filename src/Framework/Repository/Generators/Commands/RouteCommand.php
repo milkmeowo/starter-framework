@@ -1,6 +1,6 @@
 <?php
 /**
- * RouteCommand.php
+ * RouteCommand.php.
  *
  * Description
  *
@@ -8,6 +8,7 @@
  */
 
 namespace Milkmeowo\Framework\Repository\Generators\Commands;
+
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -35,7 +36,6 @@ class RouteCommand extends Command
      * @var string
      */
     protected $type = 'Route';
-
 
     /**
      * Execute the command.
@@ -85,5 +85,4 @@ class RouteCommand extends Command
             ],
         ];
     }
-
 }

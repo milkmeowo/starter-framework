@@ -381,7 +381,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
     }
 
     /**
-     * Rewrite delete method to support soft delete return
+     * Rewrite delete method to support soft delete return.
      *
      * @param $id
      *
@@ -393,7 +393,7 @@ abstract class Repository extends BaseRepository implements RepositoryInterface,
 
         $deleted = parent::delete($id);
         $isSoftDelete = method_exists($this->model(), 'runSoftDelete');
-        if($isSoftDelete) {
+        if ($isSoftDelete) {
             $deleted = $this->skipPresenter()->withTrashed()->find($id)->trashed();
         }
 
