@@ -96,7 +96,7 @@ class $CONTROLLER$Controller extends BaseController
      */
     public function destroy($id)
     {
-        $deleted = $this->repository->delete((int) $id);
+        $deleted = $this->repository->delete($id);
 
         if ($deleted) {
             // Deleted, return 204 No Content
@@ -140,7 +140,7 @@ class $CONTROLLER$Controller extends BaseController
      */
     public function restore($id)
     {
-        $restored =  $this->repository->restore((int) $id);
+        $restored =  $this->repository->restore($id);
 
         if ($restored) {
             // Restored, return 204 No Content
