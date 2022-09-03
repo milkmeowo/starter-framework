@@ -152,7 +152,7 @@ you can use with config
 [dingo-api-wiki-zh](https://github.com/liyu001989/dingo-api-wiki-zh).
 
 ## l5-Repository
-<img src="http://oomusou.io/images/laravel/laravel-architecture/arch002.svg" width="700">
+<img src="https://old-oomusou.goodjack.tw/images/laravel/laravel-architecture/arch002.svg" width="700">
 
 **improve**
 
@@ -388,7 +388,7 @@ fields                |    default            |    description
 
 [league/fractal](http://fractal.thephpleague.com/)
 
-[Laravel 的中大型專案架構](http://oomusou.io/laravel/laravel-architecture/).
+[Laravel 的中大型專案架構](https://old-oomusou.goodjack.tw/laravel/architecture/).
 
 ## Illuminate Database
 
